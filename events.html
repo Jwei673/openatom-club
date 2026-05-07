@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动中心 - OpenAtom Club</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">⚛️</span>
+                <span class="logo-text">OpenAtom Club</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="members.html" class="nav-link">成员</a></li>
+                <li><a href="projects.html" class="nav-link">项目</a></li>
+                <li><a href="docs/index.html" class="nav-link">文档</a></li>
+                <li><a href="events.html" class="nav-link active">活动</a></li>
+                <li>
+                    <a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">⭐ Star</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主体布局 -->
+    <div class="main-layout">
+        <!-- 左侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h3>📌 关于活动</h3>
+                <p>我们定期举办各类技术活动，包括分享会、Hackathon、Workshop 等，欢迎积极参与！</p>
+            </div>
+            <div class="sidebar-card">
+                <h3>🗓️ 活动类型</h3>
+                <ul class="quick-links">
+                    <li>🎤 技术分享会</li>
+                    <li>💻 Hackathon</li>
+                    <li>🔧 Workshop</li>
+                    <li>🎮 编程竞赛</li>
+                    <li>☕ 线下交流会</li>
+                </ul>
+            </div>
+            <div class="sidebar-card">
+                <h3>📊 活动统计</h3>
+                <div class="stat-item">
+                    <span class="stat-number">12+</span>
+                    <span class="stat-label">已举办活动</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">300+</span>
+                    <span class="stat-label">参与人次</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 右侧主内容 -->
+        <main class="content">
+            <section class="hero" style="padding: 32px;">
+                <h1 class="hero-title" style="font-size: 2rem;">
+                    <span class="hero-icon" style="font-size: 2.5rem;">📅</span>
+                    活动中心
+                </h1>
+                <p class="hero-desc">了解我们正在举办和即将举办的活动</p>
+            </section>
+
+            <!-- 即将举办 -->
+            <section style="margin-bottom: 48px;">
+                <h2 class="section-title">🔥 即将举办</h2>
+                <div class="feature-grid" style="grid-template-columns: 1fr 1fr;">
+                    <!-- 活动卡片 1 -->
+                    <div class="feature-card" style="border-left: 3px solid var(--accent-green);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <span class="tag tag-green">🎤 技术分享</span>
+                            <span style="color: var(--text-muted); font-size: 0.85rem;">📅 2026-05-20</span>
+                        </div>
+                        <h3>前端工程化实战</h3>
+                        <p>深入讲解 Vite、Webpack 构建工具原理，以及 CI/CD 流水线搭建。适合有一定前端基础的同学。</p>
+                        <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">CI/CD</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                        <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--text-muted); font-size: 0.85rem;">📍 大学生活动中心 302</span>
+                            <span style="color: var(--accent-green); font-size: 0.85rem;">🔥 已有 42 人报名</span>
+                        </div>
+                        <a href="#" class="btn btn-primary" style="margin-top: 16px; display: block; text-align: center; text-decoration: none;">立即报名</a>
+                    </div>
+                    <!-- 活动卡片 2 -->
+                    <div class="feature-card" style="border-left: 3px solid var(--accent-orange);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <span class="tag tag-orange">💻 Hackathon</span>
+                            <span style="color: var(--text-muted); font-size: 0.85rem;">📅 2026-06-01 ~ 06-03</span>
+                        </div>
+                        <h3>暑期 Hackathon 挑战赛</h3>
+                        <p>48 小时不间断编程挑战，主题为「AI + 校园生活」。一等奖 2000 元奖金，优秀项目可获孵化支持。</p>
+                        <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag">AI</span>
+                            <span class="tag">全栈</span>
+                            <span class="tag">团队赛</span>
+                        </div>
+                        <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--text-muted); font-size: 0.85rem;">📍 创客空间</span>
+                            <span style="color: var(--accent-orange); font-size: 0.85rem;">⏳ 报名倒计时 24 天</span>
+                        </div>
+                        <a href="#" class="btn btn-secondary" style="margin-top: 16px; display: block; text-align: center; text-decoration: none;">了解详情</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 近期活动日程 -->
+            <section style="margin-bottom: 48px;">
+                <h2 class="section-title">🗓️ 近期日程（2026年5月-6月）</h2>
+                <div style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden;">
+                    <div style="display: grid; grid-template-columns: 80px 1fr 120px 100px; background: var(--bg-tertiary); padding: 12px 16px; font-weight: 600; font-size: 0.85rem; color: var(--text-secondary);">
+                        <div>日期</div>
+                        <div>活动名称</div>
+                        <div>类型</div>
+                        <div>状态</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr 120px 100px; padding: 14px 16px; border-bottom: 1px solid var(--border-secondary); align-items: center;">
+                        <div style="font-weight: 600; color: var(--accent-green);">05-20</div>
+                        <div>前端工程化实战</div>
+                        <div><span class="tag" style="font-size: 0.75rem;">技术分享</span></div>
+                        <div style="color: var(--accent-green); font-size: 0.85rem;">报名中</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr 120px 100px; padding: 14px 16px; border-bottom: 1px solid var(--border-secondary); background: var(--bg-primary); align-items: center;">
+                        <div style="font-weight: 600; color: var(--accent-orange);">06-01</div>
+                        <div>暑期 Hackathon 挑战赛</div>
+                        <div><span class="tag tag-orange" style="font-size: 0.75rem;">Hackathon</span></div>
+                        <div style="color: var(--accent-orange); font-size: 0.85rem;">报名中</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr 120px 100px; padding: 14px 16px; border-bottom: 1px solid var(--border-secondary); align-items: center;">
+                        <div style="font-weight: 600; color: var(--accent-blue);">06-15</div>
+                        <div>开源项目贡献入门 Workshop</div>
+                        <div><span class="tag" style="font-size: 0.75rem;">Workshop</span></div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">筹备中</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr 120px 100px; padding: 14px 16px; border-bottom: 1px solid var(--border-secondary); background: var(--bg-primary); align-items: center;">
+                        <div style="font-weight: 600; color: var(--accent-purple);">06-22</div>
+                        <div>学期总结 & 优秀成员表彰</div>
+                        <div><span class="tag tag-purple" style="font-size: 0.75rem;">线下交流</span></div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">筹备中</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr 120px 100px; padding: 14px 16px; align-items: center;">
+                        <div style="font-weight: 600; color: var(--text-muted);">07-01</div>
+                        <div>暑期集训营开营仪式</div>
+                        <div><span class="tag" style="font-size: 0.75rem;">集训营</span></div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem;">计划中</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 往期活动回顾 -->
+            <section style="margin-bottom: 48px;">
+                <h2 class="section-title">📖 往期回顾</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+                    <!-- 回顾卡片 1 -->
+                    <div class="feature-card">
+                        <div style="background: linear-gradient(135deg, #238636 0%, #2ea043 100%); height: 80px; border-radius: 8px 8px 0 0; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
+                            🎉
+                        </div>
+                        <div style="padding: 16px;">
+                            <span style="color: var(--text-muted); font-size: 0.8rem;">2026-04-15</span>
+                            <h4 style="margin: 8px 0;">Git & GitHub 入门分享会</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem;">40+ 人参与，讲解了 Git 基础命令、GitHub 协作流程、PR 提交流程。</p>
+                            <div style="margin-top: 12px; display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.8rem;">
+                                <span>👥 42 人参与</span>
+                                <span>⭐ 好评如潮</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 回顾卡片 2 -->
+                    <div class="feature-card">
+                        <div style="background: linear-gradient(135deg, #a371f7 0%, #8957e5 100%); height: 80px; border-radius: 8px 8px 0 0; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
+                            🤖
+                        </div>
+                        <div style="padding: 16px;">
+                            <span style="color: var(--text-muted); font-size: 0.8rem;">2026-03-20</span>
+                            <h4 style="margin: 8px 0;">AI 辅助编程实战训练</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem;">使用 Copilot、Cursor 等工具实操演示，提升编码效率 50%+。</p>
+                            <div style="margin-top: 12px; display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.8rem;">
+                                <span>👥 35 人参与</span>
+                                <span>⭐ 好评如潮</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 回顾卡片 3 -->
+                    <div class="feature-card">
+                        <div style="background: linear-gradient(135deg, #f0883e 0%, #db6d28 100%); height: 80px; border-radius: 8px 8px 0 0; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
+                            🏆
+                        </div>
+                        <div style="padding: 16px;">
+                            <span style="color: var(--text-muted); font-size: 0.8rem;">2026-02-14</span>
+                            <h4 style="margin: 8px 0;">春节 Hackathon 挑战赛</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem;">主题「科技年味」，诞生了 8 个优秀作品，一等奖「年味地图」已上线。</p>
+                            <div style="margin-top: 12px; display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.8rem;">
+                                <span>👥 25 人参与</span>
+                                <span>🏆 8 支队伍</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 活动参与方式 -->
+            <section style="margin-bottom: 48px;">
+                <h2 class="section-title">🤝 如何参与活动</h2>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+                    <div style="text-align: center; padding: 24px; background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px;">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">1️⃣</div>
+                        <h4>关注通知</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 8px;">加入 QQ 群/微信群，获取第一手活动通知</p>
+                    </div>
+                    <div style="text-align: center; padding: 24px; background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px;">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">2️⃣</div>
+                        <h4>提前报名</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 8px;">活动开始前在群内报名，方便我们准备场地和材料</p>
+                    </div>
+                    <div style="text-align: center; padding: 24px; background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px;">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">3️⃣</div>
+                        <h4>准时参加</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 8px;">按时到达活动地点，带上你的电脑和问题</p>
+                    </div>
+                    <div style="text-align: center; padding: 24px; background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px;">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">4️⃣</div>
+                        <h4>积极反馈</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 8px;">活动结束后填写反馈问卷，帮助我们做得更好</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 OpenAtom Club · <a href="index.html">首页</a> · <a href="members.html">成员</a> · <a href="projects.html">项目</a></p>
+        </div>
+    </footer>
+</body>
+</html>

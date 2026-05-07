@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术博客 - OpenAtom Club</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 博客专属样式 */
+        .blog-layout { display: grid; grid-template-columns: 1fr 300px; gap: 24px; }
+        .blog-card { background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; padding: 20px; transition: border-color 0.2s; cursor: pointer; }
+        .blog-card:hover { border-color: var(--accent-blue); }
+        .blog-card-meta { display: flex; gap: 16px; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 12px; }
+        .blog-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+        .blog-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px; }
+        .blog-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag { display: inline-block; padding: 2px 10px; background: var(--bg-tertiary); border: 1px solid var(--border-primary); border-radius: 100px; font-size: 0.75rem; color: var(--text-secondary); }
+        .tag-blue { background: rgba(88,166,255,0.1); border-color: rgba(88,166,255,0.3); color: var(--accent-blue); }
+        .tag-green { background: rgba(35,134,54,0.15); border-color: rgba(35,134,54,0.4); color: #3fb950; }
+        .tag-purple { background: rgba(163,113,247,0.1); border-color: rgba(163,113,247,0.3); color: var(--accent-purple); }
+        .tag-orange { background: rgba(240,136,62,0.1); border-color: rgba(240,136,62,0.3); color: var(--accent-orange); }
+        .blog-featured { background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(88,166,255,0.05) 100%); border: 1px solid rgba(88,166,255,0.3); }
+        .blog-featured h3 { font-size: 1.5rem; }
+        .read-more { color: var(--accent-blue); font-size: 0.85rem; display: inline-flex; align-items: center; gap: 4px; }
+        .read-more:hover { color: var(--accent-blue-hover); }
+        .toc-card { position: sticky; top: 80px; }
+        .toc-card h3 { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; }
+        .toc-item { padding: 6px 0; border-bottom: 1px solid var(--border-secondary); }
+        .toc-item:last-child { border-bottom: none; }
+        .toc-item a { color: var(--text-secondary); font-size: 0.85rem; display: flex; align-items: center; gap: 8px; }
+        .toc-item a:hover { color: var(--accent-blue); }
+        .toc-item .toc-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+        .pager { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
+        .pager-btn { padding: 8px 16px; background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 6px; color: var(--text-secondary); cursor: pointer; font-size: 0.85rem; }
+        .pager-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+        .pager-btn.active { background: var(--accent-green); border-color: var(--accent-green); color: white; }
+        .search-box { position: relative; margin-bottom: 20px; }
+        .search-box input { width: 100%; padding: 10px 16px 10px 40px; background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: 8px; color: var(--text-primary); font-size: 0.9rem; outline: none; }
+        .search-box input:focus { border-color: var(--accent-blue); }
+        .search-box::before { content: "🔍"; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; }
+        .category-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+        .category-btn { padding: 6px 14px; background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 100px; color: var(--text-secondary); font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+        .category-btn:hover, .category-btn.active { background: rgba(88,166,255,0.1); border-color: rgba(88,166,255,0.3); color: var(--accent-blue); }
+        .popular-post { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border-secondary); }
+        .popular-post:last-child { border-bottom: none; }
+        .popular-post-num { font-size: 1.2rem; font-weight: 700; color: var(--accent-green); width: 24px; flex-shrink: 0; }
+        .popular-post h4 { font-size: 0.85rem; margin-bottom: 4px; line-height: 1.4; }
+        .popular-post-meta { font-size: 0.75rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">⚛️</span>
+                <span class="logo-text">OpenAtom Club</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="members.html" class="nav-link">成员</a></li>
+                <li><a href="projects.html" class="nav-link">项目</a></li>
+                <li><a href="docs/index.html" class="nav-link">文档</a></li>
+                <li><a href="events.html" class="nav-link">活动</a></li>
+                <li><a href="blog.html" class="nav-link active">博客</a></li>
+                <li>
+                    <a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">⭐ Star</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主体布局 -->
+    <div class="main-layout">
+        <!-- 左侧主内容 -->
+        <main class="content">
+            <div style="padding: 32px 32px 0;">
+                <h1 class="hero-title" style="font-size: 2rem; margin-bottom: 8px;">
+                    <span style="font-size: 2.5rem;">📝</span> 技术博客
+                </h1>
+                <p class="hero-desc">社团成员的技术分享、教程与经验总结</p>
+            </div>
+
+            <!-- 搜索和分类 -->
+            <div style="padding: 0 32px; margin-top: 24px;">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索文章..." id="blogSearch">
+                </div>
+                <div class="category-filter">
+                    <span class="category-btn active" onclick="filterCategory(this, 'all')">全部</span>
+                    <span class="category-btn" onclick="filterCategory(this, 'tutorial')">教程</span>
+                    <span class="category-btn" onclick="filterCategory(this, 'tool')">工具</span>
+                    <span class="category-btn" onclick="filterCategory(this, 'devops')">DevOps</span>
+                    <span class="category-btn" onclick="filterCategory(this, 'frontend')">前端</span>
+                    <span class="category-btn" onclick="filterCategory(this, 'backend')">后端</span>
+                    <span class="category-btn" onclick="filterCategory(this, 'ai')">AI</span>
+                </div>
+            </div>
+
+            <!-- 精选文章 -->
+            <div style="padding: 0 32px; margin-bottom: 24px;">
+                <div class="blog-card blog-featured" onclick="location.href='#'">
+                    <div class="blog-card-meta">
+                        <span>👤 Alice Chen</span>
+                        <span>📅 2026-05-06</span>
+                        <span>⏱️ 15 分钟阅读</span>
+                    </div>
+                    <div class="blog-tags" style="margin-bottom: 10px;">
+                        <span class="tag tag-blue">精选</span>
+                        <span class="tag tag-green">前端</span>
+                        <span class="tag">React</span>
+                    </div>
+                    <h3>🎯 从零搭建 React + TypeScript + Vite 企业级项目</h3>
+                    <p>本文详细介绍如何从零开始搭建一个规范的企业级 React 项目，包含目录结构设计、TypeScript 配置、ESLint + Prettier 集成、单元测试、Git Hooks 等关键内容，适合想要规范化前端项目的开发者参考。</p>
+                    <span class="read-more">阅读全文 →</span>
+                </div>
+            </div>
+
+            <!-- 文章列表 -->
+            <div style="padding: 0 32px; display: grid; gap: 16px;" id="articleList">
+                <!-- 文章1 -->
+                <div class="blog-card" data-category="devops" onclick="location.href='#'">
+                    <div class="blog-card-meta">
+                        <span>👤 Bob Wang</span>
+                        <span>📅 2026-04-28</span>
+                        <span>⏱️ 12 分钟阅读</span>
+                    </div>
+                    <div class="blog-tags" style="margin-bottom: 10px;">
+                        <span class="tag tag-green">DevOps</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">CI/CD</span>
+                    </div>
+                    <h3>🐳 Docker 从入门到精通：手把手教你容器化部署</h3>
+                    <p>Docker 是现代开发者的必备技能。本文从镜像、容器、网络、存储卷四大核心概念讲起，配合实际项目演示如何编写 Dockerfile、docker-compose.yml，以及 GitHub Actions 自动构建部署流水线。</p>
+                    <span class="read-more">阅读全文 →</span>
+                </div>
+                <!-- 文章2 -->
+                <div class="blog-card" data-category="backend" onclick="location.href='#'">
+                    <div class="blog-card-meta">
+                        <span>👤 Carol Li</span>
+                        <span>📅 2026-04-20</span>
+                        <span>⏱️ 10 分钟阅读</span>
+                    </div>
+                    <div class="blog-tags" style="margin-bottom: 10px;">
+                        <span class="tag tag-purple">后端</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span>
+                    </div>
+                    <h3>⚡ FastAPI 高性能 Web 开发实战：从 0 到 1</h3>
+                    <p>FastAPI 是目前最流行的 Python Web 框架之一，以其异步支持和自动文档生成闻名。本文介绍 FastAPI 的核心用法、路由设计、数据库集成（Peewee + Redis）、JWT 认证，以及生产环境部署注意事项。</p>
+                    <span class="read-more">阅读全文 →</span>
+                </div>
+                <!-- 文章3 -->
+                <div class="blog-card" data-category="tool" onclick="location.href='#'">
+                    <div class="blog-card-meta">
+                        <span>👤 Jwei673</span>
+                        <span>📅 2026-04-15</span>
+                        <span>⏱️ 8 分钟阅读</span>
+                    </div>
+                    <div class="blog-tags" style="margin-bottom: 10px;">
+                        <span class="tag tag-orange">工具</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">效率</span>
+                    </div>
+                    <h3>🔧 这些 Git 命令，90% 的开发者都没用过</h3>
+                    <p>除了 add、commit、push，你真的会 Git 吗？本文介绍 10 个进阶 Git 命令：git bisect 快速定位 bug、git stash -p 暂存单个文件、git reflog 恢复误删的 commit、git cherry-pick 精准合并、git rerere 记住合并策略等。</p>
+                    <span class="read-more">阅读全文 →</span>
+                </div>
+                <!-- 文章4 -->
+                <div class="blog-card" data-category="ai" onclick="location.href='#'">
+                    <div class="blog-card-meta">
+                        <span>👤 David Zhang</span>
+                        <span>📅 2026-04-08</span>
+                        <span>⏱️ 20 分钟阅读</span>
+                    </div>
+                    <div class="blog-tags" style="margin-bottom: 10px;">
+                        <span class="tag tag-blue">AI</span>
+                        <span class="tag">LLM</span>
+                        <span class="tag">Prompt</span>
+                    </div>
+                    <h3>🤖 如何用 AI 工具将开发效率提升 3 倍</h3>
+                    <p>Copilot、Cursor、Claude... AI 辅助编程工具正在改变开发方式。本文从实际项目出发，演示如何将 AI 工具融入日常工作流：代码生成、代码审查、Bug 修复、文档编写、测试用例生成，让 AI 成为真正的开发搭档。</p>
+                    <span class="read-more">阅读全文 →</span>
+                </div>
+                <!-- 文章5 -->
+                <div class="blog-card" data-category="tutorial" onclick="location.href='#'">
+                    <div class="blog-card-meta">
+                        <span>👤 Alice Chen</span>
+                        <span>📅 2026-03-25</span>
+                        <span>⏱️ 18 分钟阅读</span>
+                    </div>
+                    <div class="blog-tags" style="margin-bottom: 10px;">
+                        <span class="tag tag-green">教程</span>
+                        <span class="tag">GitHub</span>
+                        <span class="tag">开源</span>
+                    </div>
+                    <h3>📦 如何为开源项目贡献代码：完整 PR 流程指南</h3>
+                    <p>想参与开源但不知道从哪里开始？本文以一个真实开源项目为例，完整演示从 Fork 仓库、了解 issue、创建分支、开发功能、提交 PR 到 Code Review 通过的全流程，让你迈出开源贡献的第一步。</p>
+                    <span class="read-more">阅读全文 →</span>
+                </div>
+            </div>
+
+            <!-- 分页 -->
+            <div style="padding: 0 32px 32px;">
+                <div class="pager">
+                    <button class="pager-btn active">1</button>
+                    <button class="pager-btn">2</button>
+                    <button class="pager-btn">3</button>
+                    <button class="pager-btn">→</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 右侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-card toc-card">
+                <h3>📚 文章分类</h3>
+                <div class="toc-item">
+                    <a href="#"><span class="toc-dot" style="background: var(--accent-green);"></span>前端 (8篇)</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#"><span class="toc-dot" style="background: var(--accent-purple);"></span>后端 (6篇)</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#"><span class="toc-dot" style="background: var(--accent-blue);"></span>DevOps (5篇)</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#"><span class="toc-dot" style="background: var(--accent-orange);"></span>工具技巧 (4篇)</a>
+                </div>
+                <div class="toc-item">
+                    <a href="#"><span class="toc-dot" style="background: #f778ba;"></span>AI (3篇)</a>
+                </div>
+            </div>
+            <div class="sidebar-card">
+                <h3>🔥 热门文章</h3>
+                <div class="popular-post">
+                    <span class="popular-post-num">1</span>
+                    <div>
+                        <h4>从零搭建 React + TypeScript + Vite 项目</h4>
+                        <span class="popular-post-meta">👁️ 1256 阅读</span>
+                    </div>
+                </div>
+                <div class="popular-post">
+                    <span class="popular-post-num">2</span>
+                    <div>
+                        <h4>Docker 容器化部署实战</h4>
+                        <span class="popular-post-meta">👁️ 987 阅读</span>
+                    </div>
+                </div>
+                <div class="popular-post">
+                    <span class="popular-post-num">3</span>
+                    <div>
+                        <h4>Git 进阶命令详解</h4>
+                        <span class="popular-post-meta">👁️ 854 阅读</span>
+                    </div>
+                </div>
+                <div class="popular-post">
+                    <span class="popular-post-num">4</span>
+                    <div>
+                        <h4>AI 辅助编程效率提升指南</h4>
+                        <span class="popular-post-meta">👁️ 762 阅读</span>
+                    </div>
+                </div>
+                <div class="popular-post">
+                    <span class="popular-post-num">5</span>
+                    <div>
+                        <h4>FastAPI 高性能后端开发</h4>
+                        <span class="popular-post-meta">👁️ 643 阅读</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-card">
+                <h3>👥 作者排行</h3>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="background: var(--accent-green); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">1</span>
+                        <div>
+                            <div style="font-size: 0.85rem;">Alice Chen</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">8 篇文章</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="background: var(--accent-blue); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">2</span>
+                        <div>
+                            <div style="font-size: 0.85rem;">Bob Wang</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">6 篇文章</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="background: var(--accent-purple); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">3</span>
+                        <div>
+                            <div style="font-size: 0.85rem;">Carol Li</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">5 篇文章</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="background: var(--accent-orange); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">4</span>
+                        <div>
+                            <div style="font-size: 0.85rem;">Jwei673</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">4 篇文章</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 OpenAtom Club · <a href="index.html">首页</a> · <a href="blog.html">博客</a> · <a href="events.html">活动</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // 分类筛选功能
+        function filterCategory(btn, category) {
+            // 更新按钮状态
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            // 筛选文章
+            const cards = document.querySelectorAll('#articleList .blog-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        // 搜索功能
+        document.getElementById('blogSearch').addEventListener('input', function(e) {
+            const keyword = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('#articleList .blog-card');
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(keyword) ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
