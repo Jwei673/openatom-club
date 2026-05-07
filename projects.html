@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目 - OpenAtom Club</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ========== 顶部导航栏 ========== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">⚛️</span>
+                <span class="logo-text">OpenAtom Club</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="members.html" class="nav-link">成员</a></li>
+                <li><a href="projects.html" class="nav-link active">项目</a></li>
+                <li><a href="docs/index.html" class="nav-link">文档</a></li>
+                <li>
+                    <a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">
+                        ⭐ Star
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== 主体布局 ========== -->
+    <div class="main-layout">
+        <!-- 左侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h3>📌 关于项目</h3>
+                <p>我们正在开发多个开源项目，涵盖 Web 开发、移动端、工具类等多个领域。</p>
+            </div>
+            <div class="sidebar-card">
+                <h3>🔗 快速链接</h3>
+                <ul class="quick-links">
+                    <li><a href="https://github.com/Jwei673/openatom-club" target="_blank">📂 GitHub 仓库</a></li>
+                    <li><a href="members.html">👥 成员名单</a></li>
+                    <li><a href="docs/index.html">📖 文档中心</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 右侧主内容 -->
+        <main class="content">
+            <section class="hero" style="padding: 32px;">
+                <h1 class="hero-title" style="font-size: 2rem;">
+                    <span class="hero-icon" style="font-size: 2.5rem;">🚀</span>
+                    开源项目
+                </h1>
+                <p class="hero-desc">探索我们正在开发的项目，欢迎 Star 和参与贡献</p>
+            </section>
+
+            <!-- 项目列表 -->
+            <div class="projects-list">
+                <!-- 项目 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <a href="https://github.com/Jwei673/openatom-club" target="_blank" class="project-title">
+                                📂 openatom-club
+                            </a>
+                        </div>
+                        <div class="project-stats">
+                            <span class="project-stat">⭐ 0</span>
+                            <span class="project-stat">🍴 0</span>
+                            <span class="project-stat">🔄 1</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">OpenAtom Club 官方网站，基于纯 HTML/CSS 构建，采用 GitHub 深色主题设计。</p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">GitHub Pages</span>
+                    </div>
+                </div>
+
+                <!-- 项目 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <a href="#" class="project-title">
+                                📱 campus-nav
+                            </a>
+                        </div>
+                        <div class="project-stats">
+                            <span class="project-stat">⭐ 0</span>
+                            <span class="project-stat">🍴 0</span>
+                            <span class="project-stat">🔄 0</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">校园导航小程序，帮助新生快速熟悉校园环境，包含地图、路线规划、设施搜索等功能。</p>
+                    <div class="project-tags">
+                        <span class="project-tag">微信小程序</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">高德地图 API</span>
+                    </div>
+                </div>
+
+                <!-- 项目 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <a href="#" class="project-title">
+                                🛠️ auto-deploy-tool
+                            </a>
+                        </div>
+                        <div class="project-stats">
+                            <span class="project-stat">⭐ 0</span>
+                            <span class="project-stat">🍴 0</span>
+                            <span class="project-stat">🔄 0</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">自动化部署工具，支持一键部署应用到云服务器，减少重复操作，提高开发效率。</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Shell</span>
+                        <span class="project-tag">Docker</span>
+                    </div>
+                </div>
+
+                <!-- 项目 4 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <a href="#" class="project-title">
+                                📚 tech-blog
+                            </a>
+                        </div>
+                        <div class="project-stats">
+                            <span class="project-stat">⭐ 0</span>
+                            <span class="project-stat">🍴 0</span>
+                            <span class="project-stat">🔄 0</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">技术博客平台，分享社团成员的学习心得、技术踩坑记录，倡导知识共享精神。</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Vue.js</span>
+                        <span class="project-tag">Node.js</span>
+                        <span class="project-tag">Markdown</span>
+                    </div>
+                </div>
+
+                <!-- 项目 5 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <a href="#" class="project-title">
+                                🔧 code-review-bot
+                            </a>
+                        </div>
+                        <div class="project-stats">
+                            <span class="project-stat">⭐ 0</span>
+                            <span class="project-stat">🍴 0</span>
+                            <span class="project-stat">🔄 0</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">基于 GitHub Actions 的代码审查机器人，自动检查代码风格、潜在 Bug、安全漏洞。</p>
+                    <div class="project-tags">
+                        <span class="project-tag">GitHub Actions</span>
+                        <span class="project-tag">TypeScript</span>
+                        <span class="project-tag">ESLint</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 贡献项目 -->
+            <section style="margin-top: 48px;">
+                <h2 class="section-title">🤝 参与贡献</h2>
+                <div class="feature-card" style="text-align: center; padding: 48px;">
+                    <div class="feature-icon" style="font-size: 3rem;">💡</div>
+                    <h3>如何参与项目开发？</h3>
+                    <p style="margin-bottom: 16px;">
+                        1. Fork 项目到你的 GitHub 账号<br>
+                        2. 克隆到本地，创建新分支<br>
+                        3. 完成开发后提交 Pull Request<br>
+                        4. 等待 Code Review 和合并
+                    </p>
+                    <a href="https://github.com/Jwei673/openatom-club/issues" target="_blank" class="btn btn-secondary">
+                        🐛 查看 Issues
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 OpenAtom Club. 基于 <a href="https://github.com" target="_blank">GitHub</a> 风格主题</p>
+        </div>
+    </footer>
+</body>
+</html>
