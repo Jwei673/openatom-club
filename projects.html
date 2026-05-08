@@ -19,11 +19,11 @@
                 <li><a href="members.html" class="nav-link">成员</a></li>
                 <li><a href="projects.html" class="nav-link active">项目</a></li>
                 <li><a href="docs/index.html" class="nav-link">文档</a></li>
-                <li>
-                    <a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">
-                        ⭐ Star
-                    </a>
-                </li>
+                <li><a href="events.html" class="nav-link">活动</a></li>
+                <li><a href="blog.html" class="nav-link">博客</a></li>
+                <li><a href="resources.html" class="nav-link">资源</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌙</button></li>
+                <li><a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">⭐ Star</a></li>
             </ul>
         </div>
     </nav>
@@ -195,5 +195,80 @@
             <p>&copy; 2026 OpenAtom Club. 基于 <a href="https://github.com" target="_blank">GitHub</a> 风格主题</p>
         </div>
     </footer>
+
+    <!-- 共享脚本 -->
+    <script src="shared.js"></script>
+
+    <!-- 全站搜索弹窗 -->
+    <div class="search-overlay" id="searchOverlay" onclick="if(event.target.id==='searchOverlay'){closeSearch()}">
+        <div class="search-modal" onclick="event.stopPropagation()">
+            <input class="search-modal-input" type="text" placeholder="搜索页面..." id="searchInput" autocomplete="off">
+            <div class="search-results" id="searchResults">
+                <div class="search-empty">输入关键词开始搜索...</div>
+            </div>
+            <div class="search-modal-footer">
+                <span><kbd>↑</kbd><kbd>↓</kbd> 导航</span>
+                <span><kbd>Enter</kbd> 跳转</span>
+                <span><kbd>Esc</kbd> 关闭</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 回到顶部 -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">⬆</button>
+
+    <!-- 搜索功能 -->
+    <script>
+    (function(){
+        var searchData=[
+            {title:"首页",desc:"OpenAtom Club 官方网站首页",icon:"🏠",url:"index.html"},
+            {title:"成员",desc:"社团核心成员与活跃成员列表",icon:"👥",url:"members.html"},
+            {title:"项目",desc:"社团正在开发的项目展示",icon:"🚀",url:"projects.html"},
+            {title:"文档",desc:"社团介绍、Git 教程、常见问题",icon:"📄",url:"docs/index.html"},
+            {title:"活动",desc:"即将举办的活动与往期回顾",icon:"📅",url:"events.html"},
+            {title:"博客",desc:"技术文章、教程与经验分享",icon:"📝",url:"blog.html"},
+            {title:"资源中心",desc:"开发工具、学习路线、书籍推荐",icon:"🎓",url:"resources.html"},
+        ];
+        var si=document.getElementById("searchInput");
+        var sr=document.getElementById("searchResults");
+        var sel=-1;
+        if(si){
+            si.addEventListener("input",function(){
+                var kw=this.value.trim().toLowerCase();
+                sel=-1;
+                if(!kw){sr.innerHTML='<div class="search-empty">输入关键词开始搜索...</div>';return;}
+                var filt=searchData.filter(function(i){return i.title.toLowerCase().includes(kw)||i.desc.toLowerCase().includes(kw);});
+                if(!filt.length){sr.innerHTML='<div class="search-empty">没有找到相关结果</div>';return;}
+                sr.innerHTML=filt.map(function(item){
+                    return '<div class="search-result-item" onclick="location.href=\''+item.url+'\'">'+
+                        '<span class="search-result-icon">'+item.icon+'</span>'+
+                        '<div class="search-result-info"><h4>'+item.title+'</h4><p>'+item.desc+'</p></div></div>';
+                }).join("");
+            });
+            si.addEventListener("keydown",function(e){
+                var items=sr.querySelectorAll(".search-result-item");
+                if(e.key==="ArrowDown"){sel=Math.min(sel+1,items.length-1);updateSel(items);e.preventDefault();}
+                else if(e.key==="ArrowUp"){sel=Math.max(sel-1,-1);updateSel(items);e.preventDefault();}
+                else if(e.key==="Enter"&&sel>=0){items[sel].click();}
+                else if(e.key==="Escape"){closeSearch();}
+            });
+        }
+        function updateSel(items){items.forEach(function(el,i){el.classList.toggle("selected",i===sel);});if(sel>=0)items[sel].scrollIntoView({block:"nearest"});}
+        document.addEventListener("keydown",function(e){
+            if((e.ctrlKey||e.metaKey)&&e.key==="k"){e.preventDefault();openSearch();}
+        });
+        window.openSearch=function(){document.getElementById("searchOverlay").classList.add("active");document.getElementById("searchInput").focus();};
+        window.closeSearch=function(){
+            var ov=document.getElementById("searchOverlay");
+            if(ov)ov.classList.remove("active");
+            var inp=document.getElementById("searchInput");
+            if(inp)inp.value="";
+            var res=document.getElementById("searchResults");
+            if(res)res.innerHTML='<div class="search-empty">输入关键词开始搜索...</div>';
+            sel=-1;
+        };
+    })();
+    </script>
+
 </body>
 </html>

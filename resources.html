@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源中心 - OpenAtom Club</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">⚛️</span>
+                <span class="logo-text">OpenAtom Club</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="members.html" class="nav-link">成员</a></li>
+                <li><a href="projects.html" class="nav-link">项目</a></li>
+                <li><a href="docs/index.html" class="nav-link">文档</a></li>
+                <li><a href="events.html" class="nav-link">活动</a></li>
+                <li><a href="blog.html" class="nav-link">博客</a></li>
+                <li><a href="resources.html" class="nav-link active">资源</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌙</button></li>
+                <li><a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">⭐ Star</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主体布局 -->
+    <div class="main-layout">
+        <!-- 左侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h3>📌 资源导航</h3>
+                <ul class="quick-links">
+                    <li><a href="#devtools">🛠️ 开发工具</a></li>
+                    <li><a href="#learning">📚 学习路线</a></li>
+                    <li><a href="#books">📖 推荐书籍</a></li>
+                    <li><a href="#docs">📄 官方文档</a></li>
+                    <li><a href="#communities">👥 开源社区</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-card">
+                <h3>📊 资源统计</h3>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">开发工具</span>
+                        <span style="font-weight: 600; font-size: 0.85rem;">18 个</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">学习路线</span>
+                        <span style="font-weight: 600; font-size: 0.85rem;">6 条</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">推荐书籍</span>
+                        <span style="font-weight: 600; font-size: 0.85rem;">12 本</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">社区链接</span>
+                        <span style="font-weight: 600; font-size: 0.85rem;">10 个</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-card">
+                <h3>🔥 本月热门</h3>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: var(--accent-orange); color: white; width: 20px; height: 20px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0;">1</span>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Cursor AI 编辑器</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: var(--accent-blue); color: white; width: 20px; height: 20px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0;">2</span>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Vite 6 中文文档</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="background: var(--accent-purple); color: white; width: 20px; height: 20px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0;">3</span>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">GitHub Actions 入门</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 右侧主内容 -->
+        <main class="content">
+            <!-- Hero -->
+            <div style="padding: 32px; background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%); border: 1px solid var(--border-primary); border-radius: 16px; margin-bottom: 32px; text-align: center;">
+                <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 12px;">
+                    <span style="font-size: 2.5rem;">🎓</span> 资源中心
+                </h1>
+                <p style="color: var(--text-secondary); font-size: 1rem;">精选开发工具、学习路线、书籍推荐，助力你的技术成长</p>
+                <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 8px;">💡 按 <kbd style="background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: 4px; padding: 1px 6px; font-family: monospace;">Ctrl</kbd> + <kbd style="background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: 4px; padding: 1px 6px; font-family: monospace;">K</kbd> 快速搜索全站</p>
+            </div>
+
+            <!-- 开发工具 -->
+            <section id="devtools" style="margin-bottom: 48px;">
+                <h2 class="section-title">🛠️ 开发工具推荐</h2>
+                <div class="resource-grid">
+                    <!-- 工具1 -->
+                    <div class="resource-card">
+                        <div class="resource-card-header">
+                            <span class="resource-icon">💻</span>
+                            <div>
+                                <h3>Cursor</h3>
+                                <span style="font-size: 0.75rem; color: var(--accent-green);">AI 代码编辑器</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">基于 VS Code 的 AI 编辑器，支持多模型、自动补全、代码解释、调试等，大幅提升编码效率。</p>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag">AI</span>
+                            <span class="tag">编辑器</span>
+                            <span class="tag">免费</span>
+                        </div>
+                        <a href="https://cursor.com" target="_blank" class="btn btn-secondary" style="margin-top: 12px; display: block; text-align: center; text-decoration: none; font-size: 0.8rem; padding: 8px 16px;">🔗 访问官网</a>
+                    </div>
+                    <!-- 工具2 -->
+                    <div class="resource-card">
+                        <div class="resource-card-header">
+                            <span class="resource-icon">🔥</span>
+                            <div>
+                                <h3>Vite</h3>
+                                <span style="font-size: 0.75rem; color: var(--accent-purple);">下一代前端构建工具</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">极速开发服务器 + 生产构建工具，支持 Vue/React/Svelte，开箱即用，比 Webpack 快 10-100 倍。</p>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag">构建</span>
+                            <span class="tag">前端</span>
+                            <span class="tag">免费</span>
+                        </div>
+                        <a href="https://cn.vitejs.dev" target="_blank" class="btn btn-secondary" style="margin-top: 12px; display: block; text-align: center; text-decoration: none; font-size: 0.8rem; padding: 8px 16px;">🔗 访问官网</a>
+                    </div>
+                    <!-- 工具3 -->
+                    <div class="resource-card">
+                        <div class="resource-card-header">
+                            <span class="resource-icon">🐳</span>
+                            <div>
+                                <h3>Docker Desktop</h3>
+                                <span style="font-size: 0.75rem; color: var(--accent-blue);">容器化运行时</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">容器化开发环境必备，一键部署、一致性环境、隔离运行。配合 Docker Compose 管理多容器应用。</p>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag">DevOps</span>
+                            <span class="tag">容器</span>
+                            <span class="tag">免费</span>
+                        </div>
+                        <a href="https://docker.com" target="_blank" class="btn btn-secondary" style="margin-top: 12px; display: block; text-align: center; text-decoration: none; font-size: 0.8rem; padding: 8px 16px;">🔗 访问官网</a>
+                    </div>
+                    <!-- 工具4 -->
+                    <div class="resource-card">
+                        <div class="resource-card-header">
+                            <span class="resource-icon">📡</span>
+                            <div>
+                                <h3>Insomnia</h3>
+                                <span style="font-size: 0.75rem; color: var(--accent-orange);">API 调试工具</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">比 Postman 更轻量的 API 调试工具，支持 REST/GraphQL/gRPC，有免费开源版本，界面美观。</p>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag">API</span>
+                            <span class="tag">调试</span>
+                            <span class="tag">开源</span>
+                        </div>
+                        <a href="https://insomnia.rest" target="_blank" class="btn btn-secondary" style="margin-top: 12px; display: block; text-align: center; text-decoration: none; font-size: 0.8rem; padding: 8px 16px;">🔗 访问官网</a>
+                    </div>
+                    <!-- 工具5 -->
+                    <div class="resource-card">
+                        <div class="resource-card-header">
+                            <span class="resource-icon">🤖</span>
+                            <div>
+                                <h3>GitHub Copilot</h3>
+                                <span style="font-size: 0.75rem; color: var(--accent-green);">AI 代码补全</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">VS Code / JetBrains 内嵌 AI 代码补全，支持全语言，理解上下文，免费试用 30 天，学生免费申请。</p>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag">AI</span>
+                            <span class="tag">代码补全</span>
+                            <span class="tag">学生免费</span>
+                        </div>
+                        <a href="https://github.com/features/copilot" target="_blank" class="btn btn-secondary" style="margin-top: 12px; display: block; text-align: center; text-decoration: none; font-size: 0.8rem; padding: 8px 16px;">🔗 访问官网</a>
+                    </div>
+                    <!-- 工具6 -->
+                    <div class="resource-card">
+                        <div class="resource-card-header">
+                            <span class="resource-icon">🔍</span>
+                            <div>
+                                <h3>Tabler Icons</h3>
+                                <span style="font-size: 0.75rem; color: var(--accent-blue);">图标库</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">超过 5000+ 精心设计的开源图标，SVG 格式，可自定义颜色/大小，MIT 许可证，直接下载使用。</p>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="tag">图标</span>
+                            <span class="tag">SVG</span>
+                            <span class="tag">开源</span>
+                        </div>
+                        <a href="https://tabler-icons.io" target="_blank" class="btn btn-secondary" style="margin-top: 12px; display: block; text-align: center; text-decoration: none; font-size: 0.8rem; padding: 8px 16px;">🔗 访问官网</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 学习路线 -->
+            <section id="learning" style="margin-bottom: 48px;">
+                <h2 class="section-title">📚 学习路线图</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <!-- 前端路线 -->
+                    <div class="feature-card">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                            <span style="font-size: 2rem;">🖥️</span>
+                            <div>
+                                <h3>前端工程师</h3>
+                                <span style="font-size: 0.8rem; color: var(--accent-orange);">Frontend Engineer</span>
+                            </div>
+                        </div>
+                        <div style="position: relative; padding-left: 20px;">
+                            <div style="position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: var(--border-primary);"></div>
+                            <div style="margin-bottom: 16px; position: relative;">
+                                <div style="position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-green); border: 2px solid var(--bg-primary);"></div>
+                                <h4 style="font-size: 0.9rem; margin-bottom: 4px;">HTML / CSS 基础</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">语义化标签、Flexbox、Grid、CSS 变量</p>
+                            </div>
+                            <div style="margin-bottom: 16px; position: relative;">
+                                <div style="position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-green); border: 2px solid var(--bg-primary);"></div>
+                                <h4 style="font-size: 0.9rem; margin-bottom: 4px;">JavaScript 核心</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">ES6+、异步编程、DOM、BOM</p>
+                            </div>
+                            <div style="margin-bottom: 16px; position: relative;">
+                                <div style="position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-blue); border: 2px solid var(--bg-primary);"></div>
+                                <h4 style="font-size: 0.9rem; margin-bottom: 4px;">前端框架（Vue / React）</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">组件化、状态管理、路由、SSR</p>
+                            </div>
+                            <div style="margin-bottom: 16px; position: relative;">
+                                <div style="position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-blue); border: 2px solid var(--bg-primary);"></div>
+                                <h4 style="font-size: 0.9rem; margin-bottom: 4px;">构建工具</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">Vite、Webpack、性能优化</p>
+                            </div>
+                            <div style="position: relative;">
+                                <div style="position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); border: 2px solid var(--bg-primary);"></div>
+                                <h4 style="font-size: 0.9rem; margin-bottom: 4px;">工程化 & 全栈</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">Node.js、数据库、CI/CD、Docker</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 后端路线 -->
+                    <div class="feature-card">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                            <span style="font-size: 2rem;">⚙️</span>
+                            <div>
+                                <h3>后端工程师</h3>
+                                <span style="font-size: 0.8rem; color: var(--accent-blue);">Backend Engineer</span>
+                            </div>
+                        </div>
+                        <div style="position: relative; padding-left: 20px;">
+                            <div style="position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: var(--border-primary);"></div>
+                            <div style="margin-bottom: 16px; position: relative;">
+                                <div style="position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-green); border: 2px solid var(--bg-primary);"></div>
+                                <h4 style="font-size: 0.9rem; margin-bottom: 4px;">一门后端语言</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">Python / Go / Java / Node.js</p>
+                            </div>
+                            <div style="margin-bottom: 16px; position: relative;">
+                                <div style="position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-green); border: 2px solid var(--bg-primary);"></div>
+                                <h4 style="font-size: 0.9rem; margin-bottom: 4px;">数据库</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">SQL（MySQL/PostgreSQL）+ NoSQL（Redis/MongoDB）</p>
+                            </div>
+                            <div style="margin-bottom: 16px; position: relative;">
+                                <div style="position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-blue); border: 2px solid var(--bg-primary);"></div>
+                                <h4 style="font-size: 0.9rem; margin-bottom: 4px;">Web 框架 & API</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">RESTful API、GraphQL、微服务</p>
+                            </div>
+                            <div style="margin-bottom: 16px; position: relative;">
+                                <div style="position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-blue); border: 2px solid var(--bg-primary);"></div>
+                                <h4 style="font-size: 0.9rem; margin-bottom: 4px;">DevOps 基础</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">Docker、CI/CD、Linux 服务器</p>
+                            </div>
+                            <div style="position: relative;">
+                                <div style="position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); border: 2px solid var(--bg-primary);"></div>
+                                <h4 style="font-size: 0.9rem; margin-bottom: 4px;">架构设计</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">分布式、高可用、安全、性能</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 推荐书籍 -->
+            <section id="books" style="margin-bottom: 48px;">
+                <h2 class="section-title">📖 推荐书籍</h2>
+                <div class="feature-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                    <div>
+                        <div class="book-item">
+                            <div class="book-cover">📕</div>
+                            <div class="book-info">
+                                <h4>《JavaScript 高级程序设计》</h4>
+                                <p>Matt Froning / 紅皮书，前端必读</p>
+                                <span class="book-badge">前端入门</span>
+                            </div>
+                        </div>
+                        <div class="book-item">
+                            <div class="book-cover">📗</div>
+                            <div class="book-info">
+                                <h4>《你不知道的 JavaScript》</h4>
+                                <p>Kyle Simpson，深入原理</p>
+                                <span class="book-badge">进阶必读</span>
+                            </div>
+                        </div>
+                        <div class="book-item">
+                            <div class="book-cover">📘</div>
+                            <div class="book-info">
+                                <h4>《CSS 权威指南》</h4>
+                                <p>Eric Meyer，CSS 百科全书</p>
+                                <span class="book-badge">CSS 必读</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="book-item">
+                            <div class="book-cover">🟢</div>
+                            <div class="book-info">
+                                <h4>《Python编程：从入门到实践》</h4>
+                                <p>Eric Matthes，Python 入门经典</p>
+                                <span class="book-badge">Python 入门</span>
+                            </div>
+                        </div>
+                        <div class="book-item">
+                            <div class="book-cover">🟡</div>
+                            <div class="book-info">
+                                <h4>《算法导论》</h4>
+                                <p>CLRS，计算机科学基础</p>
+                                <span class="book-badge">算法基础</span>
+                            </div>
+                        </div>
+                        <div class="book-item">
+                            <div class="book-cover">🟠</div>
+                            <div class="book-info">
+                                <h4>《代码整洁之道》</h4>
+                                <p>Robert C. Martin，编程实践</p>
+                                <span class="book-badge">工程实践</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="book-item">
+                            <div class="book-cover">🔵</div>
+                            <div class="book-info">
+                                <h4>《Docker 容器与 Kubernetes》</h4>
+                                <p>云原生必备指南</p>
+                                <span class="book-badge">DevOps</span>
+                            </div>
+                        </div>
+                        <div class="book-item">
+                            <div class="book-cover">🔴</div>
+                            <div class="book-info">
+                                <h4>《深度学习入门》</h4>
+                                <p>斋藤康毅，AI 入门经典</p>
+                                <span class="book-badge">AI/ML</span>
+                            </div>
+                        </div>
+                        <div class="book-item">
+                            <div class="book-cover">⚫</div>
+                            <div class="book-info">
+                                <h4>《计算机网络：自顶向下》</h4>
+                                <p>Kurose & Ross，网络基础</p>
+                                <span class="book-badge">计算机基础</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 官方文档 -->
+            <section id="docs" style="margin-bottom: 48px;">
+                <h2 class="section-title">📄 官方文档速查</h2>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                    <a href="https://developer.mozilla.org/zh-CN/" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 8px;">📖</div>
+                        <h4 style="font-size: 0.875rem;">MDN Web Docs</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">HTML/CSS/JS 参考</p>
+                    </a>
+                    <a href="https://cn.vuejs.org" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 8px;">💚</div>
+                        <h4 style="font-size: 0.875rem;">Vue.js 文档</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">渐进式 JavaScript 框架</p>
+                    </a>
+                    <a href="https://react.dev" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 8px;">⚛️</div>
+                        <h4 style="font-size: 0.875rem;">React 文档</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">用于构建用户界面的库</p>
+                    </a>
+                    <a href="https://docs.python.org/zh-cn/3/" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 8px;">🐍</div>
+                        <h4 style="font-size: 0.875rem;">Python 文档</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">Python 3 中文文档</p>
+                    </a>
+                    <a href="https://docs.docker.com" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 8px;">🐳</div>
+                        <h4 style="font-size: 0.875rem;">Docker 文档</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">容器化技术文档</p>
+                    </a>
+                    <a href="https://git-scm.com/doc" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 8px;">📊</div>
+                        <h4 style="font-size: 0.875rem;">Git 文档</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">版本控制权威指南</p>
+                    </a>
+                    <a href="https://go.dev/doc/" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 8px;">🔵</div>
+                        <h4 style="font-size: 0.875rem;">Go 文档</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">Go 语言官方文档</p>
+                    </a>
+                    <a href="https://kubernetes.io/zh/docs/" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 8px;">☸️</div>
+                        <h4 style="font-size: 0.875rem;">Kubernetes</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">容器编排平台</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 开源社区 -->
+            <section id="communities" style="margin-bottom: 48px;">
+                <h2 class="section-title">👥 开源社区 & 平台</h2>
+                <div class="feature-grid" style="grid-template-columns: repeat(5, 1fr);">
+                    <a href="https://github.com" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 8px;">🐙</div>
+                        <h4 style="font-size: 0.875rem;">GitHub</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">全球最大开源社区</p>
+                    </a>
+                    <a href="https://gitee.com" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 8px;">🐮</div>
+                        <h4 style="font-size: 0.875rem;">Gitee</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">中文开源托管平台</p>
+                    </a>
+                    <a href="https://stackoverflow.com" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 8px;">📚</div>
+                        <h4 style="font-size: 0.875rem;">Stack Overflow</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">程序员问答社区</p>
+                    </a>
+                    <a href="https://www.v2ex.com" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 8px;">🌿</div>
+                        <h4 style="font-size: 0.875rem;">V2EX</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">程序员创意社区</p>
+                    </a>
+                    <a href="https://segmentfault.com" target="_blank" class="feature-card" style="text-decoration: none; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 8px;">💬</div>
+                        <h4 style="font-size: 0.875rem;">SegmentFault</h4>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">技术问答社区</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 全站搜索弹窗 -->
+    <div class="search-overlay" id="searchOverlay" onclick="closeSearch(event)">
+        <div class="search-modal" onclick="event.stopPropagation()">
+            <input class="search-modal-input" type="text" placeholder="搜索页面、内容..." id="searchInput" autocomplete="off">
+            <div class="search-results" id="searchResults">
+                <div class="search-empty">输入关键词开始搜索...</div>
+            </div>
+            <div class="search-modal-footer">
+                <span><kbd>↑</kbd><kbd>↓</kbd> 导航</span>
+                <span><kbd>Enter</kbd> 跳转</span>
+                <span><kbd>Esc</kbd> 关闭</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">⬆</button>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 OpenAtom Club · <a href="index.html">首页</a> · <a href="resources.html">资源</a> · <a href="blog.html">博客</a></p>
+        </div>
+    </footer>
+
+    <!-- 共享脚本 -->
+    <script src="shared.js"></script>
+    <script>
+        // ========== 搜索数据 ==========
+        const searchData = [
+            { title: '首页', desc: 'OpenAtom Club 官方网站首页', icon: '🏠', url: 'index.html' },
+            { title: '成员', desc: '社团核心成员与活跃成员列表', icon: '👥', url: 'members.html' },
+            { title: '项目', desc: '社团正在开发的项目展示', icon: '🚀', url: 'projects.html' },
+            { title: '文档', desc: '社团介绍、Git 教程、常见问题', icon: '📄', url: 'docs/index.html' },
+            { title: '活动', desc: '即将举办的活动与往期回顾', icon: '📅', url: 'events.html' },
+            { title: '博客', desc: '技术文章、教程与经验分享', icon: '📝', url: 'blog.html' },
+            { title: '资源中心', desc: '开发工具、学习路线、书籍推荐', icon: '🎓', url: 'resources.html' },
+        ];
+
+        // 搜索功能
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        let selectedIdx = -1;
+
+        searchInput.addEventListener('input', function () {
+            const kw = this.value.trim().toLowerCase();
+            selectedIdx = -1;
+            if (!kw) {
+                searchResults.innerHTML = '<div class="search-empty">输入关键词开始搜索...</div>';
+                return;
+            }
+            const filtered = searchData.filter(item =>
+                item.title.toLowerCase().includes(kw) ||
+                item.desc.toLowerCase().includes(kw)
+            );
+            if (filtered.length === 0) {
+                searchResults.innerHTML = '<div class="search-empty">没有找到相关结果</div>';
+                return;
+            }
+            searchResults.innerHTML = filtered.map((item, i) =>
+                `<div class="search-result-item" data-url="${item.url}" onclick="location.href='${item.url}'">
+                    <span class="search-result-icon">${item.icon}</span>
+                    <div class="search-result-info">
+                        <h4>${item.title}</h4>
+                        <p>${item.desc}</p>
+                    </div>
+                </div>`
+            ).join('');
+        });
+
+        searchInput.addEventListener('keydown', function (e) {
+            const items = searchResults.querySelectorAll('.search-result-item');
+            if (e.key === 'ArrowDown') {
+                selectedIdx = Math.min(selectedIdx + 1, items.length - 1);
+                updateSelection(items);
+                e.preventDefault();
+            } else if (e.key === 'ArrowUp') {
+                selectedIdx = Math.max(selectedIdx - 1, -1);
+                updateSelection(items);
+                e.preventDefault();
+            } else if (e.key === 'Enter' && selectedIdx >= 0) {
+                items[selectedIdx].click();
+            } else if (e.key === 'Escape') {
+                closeSearch();
+            }
+        });
+
+        function updateSelection(items) {
+            items.forEach((el, i) => el.classList.toggle('selected', i === selectedIdx));
+            if (selectedIdx >= 0) items[selectedIdx].scrollIntoView({ block: 'nearest' });
+        }
+
+        // 搜索弹窗快捷键
+        document.addEventListener('keydown', function (e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                openSearch();
+            }
+        });
+
+        function openSearch() {
+            document.getElementById('searchOverlay').classList.add('active');
+            document.getElementById('searchInput').focus();
+        }
+
+        function closeSearch(e) {
+            if (!e || e.target.id === 'searchOverlay') {
+                document.getElementById('searchOverlay').classList.remove('active');
+                document.getElementById('searchInput').value = '';
+                searchResults.innerHTML = '<div class="search-empty">输入关键词开始搜索...</div>';
+                selectedIdx = -1;
+            }
+        }
+
+        // 回到顶部
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
