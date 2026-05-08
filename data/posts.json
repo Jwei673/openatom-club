@@ -1,0 +1,95 @@
+{
+  "posts": [
+    {
+      "id": "git-from-zero",
+      "title": "Git 入门完全指南：从零开始掌握版本控制",
+      "category": "工具教程",
+      "tags": ["Git", "版本控制", "入门"],
+      "author": "李明辉",
+      "date": "2026-05-06",
+      "readTime": "18 分钟",
+      "views": 2341,
+      "excerpt": "Git 是每个开发者必须掌握的工具。本文从版本控制的概念讲起，手把手带你安装 Git、理解工作区与暂存区，亲手操作 commit、branch、merge，彻底搞懂 Git 的核心逻辑。",
+      "cover": "📚",
+      "featured": true
+    },
+    {
+      "id": "vue3-component-patterns",
+      "title": "Vue 3 组件化设计模式：从小白到进阶",
+      "category": "前端开发",
+      "tags": ["Vue 3", "组件化", "Composition API"],
+      "author": "王浩",
+      "date": "2026-05-03",
+      "readTime": "22 分钟",
+      "views": 1876,
+      "excerpt": "Vue 3 的 Composition API 带来了前所未有的灵活性。本文介绍几种经过实战验证的组件设计模式：逻辑复用、跨组件通信、异步组件加载、性能优化技巧。",
+      "cover": "💚",
+      "featured": true
+    },
+    {
+      "id": "docker-dev-workflow",
+      "title": "Docker 入门实战：用容器统一团队开发环境",
+      "category": "DevOps",
+      "tags": ["Docker", "开发环境", "DevOps"],
+      "author": "李雪",
+      "date": "2026-04-28",
+      "readTime": "25 分钟",
+      "views": 1423,
+      "excerpt": "还在为「在我电脑能跑」烦恼？本文展示如何用 Docker + Docker Compose 搭建一套可复用的开发环境，团队成员一条命令即可启动全部服务，彻底告别环境问题。",
+      "cover": "🐳",
+      "featured": false
+    },
+    {
+      "id": "github-actions-cicd",
+      "title": "GitHub Actions 实战：打造自动化 CI/CD 流水线",
+      "category": "DevOps",
+      "tags": ["GitHub Actions", "CI/CD", "自动化"],
+      "author": "李雪",
+      "date": "2026-04-20",
+      "readTime": "20 分钟",
+      "views": 987,
+      "excerpt": "每次手动部署既费时又容易出错。本文用实际案例讲解 GitHub Actions：从基础 workflow 语法，到单元测试自动化、镜像构建、自动部署到服务器，全程零门槛。",
+      "cover": "🤖",
+      "featured": false
+    },
+    {
+      "id": "python-web-scraper",
+      "title": "Python 爬虫入门：抓取网页数据全流程",
+      "category": "后端开发",
+      "tags": ["Python", "爬虫", "数据采集"],
+      "author": "张明",
+      "date": "2026-04-15",
+      "readTime": "30 分钟",
+      "views": 3156,
+      "excerpt": "本文从 HTTP 基础讲起，手把手用 Python requests + BeautifulSoup 搭建一个完整的爬虫项目，涵盖请求伪装、分页处理、数据存储，以及反爬应对策略。",
+      "cover": "🐍",
+      "featured": false
+    },
+    {
+      "id": "typescript-practical-guide",
+      "title": "TypeScript 实战笔记：类型即文档",
+      "category": "前端开发",
+      "tags": ["TypeScript", "类型系统", "最佳实践"],
+      "author": "陈婷婷",
+      "date": "2026-04-10",
+      "readTime": "16 分钟",
+      "views": 2109,
+      "excerpt": "TypeScript 的类型系统是天然的文档和防护网。本文介绍在实际项目中如何设计类型：联合类型、泛型约束、utility types、以及如何用类型覆盖真实业务逻辑。",
+      "cover": "📘",
+      "featured": false
+    },
+    {
+      "id": "go-concurrent-programming",
+      "title": "Go 并发编程：Goroutine 与 Channel 详解",
+      "category": "后端开发",
+      "tags": ["Go", "并发", "Goroutine"],
+      "author": "赵文博",
+      "date": "2026-04-05",
+      "readTime": "28 分钟",
+      "views": 1654,
+      "excerpt": "Go 的并发模型是其最强大的特性之一。本文从进程、线程讲起，深入解析 Goroutine 的调度原理、Channel 的各种用法，以及实战中常见的并发模式与坑。",
+      "cover": "⚡",
+      "featured": false
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "committees": [
+    {
+      "id": "tech",
+      "name": "技术部",
+      "icon": "💻",
+      "color": "#238636",
+      "desc": "负责社团所有技术项目的开发与维护，推动开源贡献",
+      "leaders": ["张明", "李雪"],
+      "members": ["王浩", "陈婷婷", "赵文博", "周芷若", "吴磊"]
+    },
+    {
+      "id": "operation",
+      "name": "运营部",
+      "icon": "📢",
+      "color": "#1f6feb",
+      "desc": "活动策划、宣传推广、社区运营、对外合作",
+      "leaders": ["刘芳", "孙伟"],
+      "members": ["郑凯", "钱莹", "黄志强", "杨洋"]
+    },
+    {
+      "id": "education",
+      "name": "教育部",
+      "icon": "📚",
+      "color": "#a371f7",
+      "desc": "技术分享、教程编写、学习路线规划、新人培养",
+      "leaders": ["李明辉", "陈晓"],
+      "members": ["林志远", "何敏", "高建", "马丽"]
+    },
+    {
+      "id": "media",
+      "name": "媒体部",
+      "icon": "🎨",
+      "color": "#f78166",
+      "desc": "官网维护、视觉设计、短视频运营、新媒体内容创作",
+      "leaders": ["周燕"],
+      "members": ["吴婷", "郑宇", "王珊", "李娜"]
+    }
+  ],
+  "groups": [
+    {
+      "id": "frontend",
+      "name": "前端小组",
+      "icon": "🖥️",
+      "parent": "tech",
+      "members": ["王浩", "陈婷婷", "周芷若"],
+      "tags": ["Vue", "React", "TypeScript"],
+      "project": "openatom-web"
+    },
+    {
+      "id": "backend",
+      "name": "后端小组",
+      "icon": "⚙️",
+      "parent": "tech",
+      "members": ["张明", "赵文博", "吴磊"],
+      "tags": ["Go", "Python", "PostgreSQL"],
+      "project": "openatom-api"
+    },
+    {
+      "id": "devops",
+      "name": "DevOps 小组",
+      "icon": "🚀",
+      "parent": "tech",
+      "members": ["李雪", "高建"],
+      "tags": ["Docker", "CI/CD", "Linux"],
+      "project": "openatom-infra"
+    },
+    {
+      "id": "content",
+      "name": "内容创作组",
+      "icon": "✍️",
+      "parent": "education",
+      "members": ["李明辉", "林志远", "何敏"],
+      "tags": ["Markdown", "Docs", "Blog"],
+      "project": "openatom-docs"
+    }
+  ]
+}

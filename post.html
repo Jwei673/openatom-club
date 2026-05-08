@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客文章 - OpenAtom Club</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ========== 文章详情页样式 ========== */
+        :root {
+            --article-max-width: 860px;
+        }
+
+        /* 文章布局 */
+        .article-layout {
+            max-width: var(--article-max-width);
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+
+        /* 返回链接 */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover { opacity: 0.7; }
+
+        /* 文章头部 */
+        .article-header {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .article-cover {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .article-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* 摘要 */
+        .article-excerpt {
+            padding: 16px 20px;
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent-blue);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* 文章正文 */
+        .article-content {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .article-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 40px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .article-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 28px 0 12px;
+        }
+
+        .article-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 20px 0 8px;
+        }
+
+        .article-content p {
+            margin-bottom: 16px;
+        }
+
+        .article-content a {
+            color: var(--accent-blue);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-content a:hover { opacity: 0.7; }
+
+        .article-content ul,
+        .article-content ol {
+            margin: 0 0 16px 24px;
+        }
+
+        .article-content li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .article-content strong { font-weight: 700; color: var(--text-primary); }
+
+        .article-content code {
+            font-family: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            font-size: 0.875em;
+            background: var(--bg-secondary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ff7b72;
+        }
+
+        .article-content pre {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .article-content pre code {
+            background: none;
+            padding: 0;
+            color: #e6edf3;
+            font-size: 0.875rem;
+        }
+
+        /* 表格 */
+        .article-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .article-content th,
+        .article-content td {
+            padding: 10px 14px;
+            border: 1px solid var(--border-primary);
+            text-align: left;
+        }
+
+        .article-content th {
+            background: var(--bg-secondary);
+            font-weight: 700;
+        }
+
+        .article-content tr:nth-child(even) td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* 底部导航 */
+        .article-footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-primary);
+        }
+
+        .article-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .article-nav-item {
+            padding: 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .article-nav-item:hover { border-color: var(--accent-blue); }
+
+        .article-nav-item.next { text-align: right; }
+
+        .article-nav-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .article-nav-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        /* 分享区 */
+        .share-section {
+            margin-top: 32px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .share-section p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        /* 侧边栏（右侧，文章目录） */
+        .toc-sidebar {
+            position: sticky;
+            top: 80px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+            padding: 0 16px;
+        }
+
+        .toc-sidebar h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+
+        .toc-list a {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .toc-list a:hover {
+            color: var(--accent-blue);
+            border-left-color: var(--accent-blue);
+            background: rgba(31,111,235,0.08);
+        }
+
+        /* 全局布局调整 */
+        .post-page-layout {
+            display: grid;
+            grid-template-columns: 1fr 220px;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 48px;
+        }
+
+        /* 加载状态 */
+        .loading-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-muted);
+        }
+
+        .loading-state .spinner {
+            font-size: 2rem;
+            animation: spin 1s linear infinite;
+            margin-bottom: 16px;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .post-page-layout { grid-template-columns: 1fr; }
+            .toc-sidebar { display: none; }
+            .article-nav { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">⚛️</span>
+                <span class="logo-text">OpenAtom Club</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="members.html" class="nav-link">成员</a></li>
+                <li><a href="projects.html" class="nav-link">项目</a></li>
+                <li><a href="docs/index.html" class="nav-link">文档</a></li>
+                <li><a href="events.html" class="nav-link">活动</a></li>
+                <li><a href="blog.html" class="nav-link active">博客</a></li>
+                <li><a href="resources.html" class="nav-link">资源</a></li>
+                <li><a href="architecture.html" class="nav-link">架构</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌙</button></li>
+                <li><a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">⭐ Star</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <div class="post-page-layout" id="postPage">
+        <div class="loading-state">
+            <div class="spinner">⏳</div>
+            <p>正在加载文章...</p>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+
+    <script>
+    (function() {
+        var postId = new URLSearchParams(location.search).get('id') || '';
+        var postsData = [];
+        var postContent = null;
+        var currentPost = null;
+
+        // 渲染文章页面
+        function renderPage(post, content, allPosts) {
+            document.title = post.title + ' - OpenAtom Club';
+
+            // 找上一篇/下一篇
+            var idx = allPosts.findIndex(function(p){ return p.id === postId; });
+            var prevPost = idx < allPosts.length - 1 ? allPosts[idx + 1] : null;
+            var nextPost = idx > 0 ? allPosts[idx - 1] : null;
+
+            var tagsHtml = post.tags.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('');
+
+            var navHtml = '<div class="article-footer"><div class="article-nav">';
+            if (prevPost) {
+                navHtml += '<a href="post.html?id=' + prevPost.id + '" class="article-nav-item prev">' +
+                    '<div class="article-nav-label">← 上一篇</div>' +
+                    '<div class="article-nav-title">' + prevPost.title + '</div></a>';
+            } else {
+                navHtml += '<div></div>';
+            }
+            if (nextPost) {
+                navHtml += '<a href="post.html?id=' + nextPost.id + '" class="article-nav-item next">' +
+                    '<div class="article-nav-label">下一篇 →</div>' +
+                    '<div class="article-nav-title">' + nextPost.title + '</div></a>';
+            }
+            navHtml += '</div></div>';
+
+            var shareUrl = encodeURIComponent(location.href);
+
+            var html =
+                // 左栏
+                '<article class="article-layout">' +
+                '<a href="blog.html" class="back-link">← 返回博客列表</a>' +
+
+                // 头部
+                '<header class="article-header">' +
+                '<div class="article-cover">' + post.cover + '</div>' +
+                '<h1 class="article-title">' + post.title + '</h1>' +
+                '<div class="article-meta">' +
+                '<span class="article-meta-item">👤 ' + post.author + '</span>' +
+                '<span class="article-meta-item">📅 ' + post.date + '</span>' +
+                '<span class="article-meta-item">⏱️ ' + post.readTime + '</span>' +
+                '<span class="article-meta-item">👁️ ' + post.views.toLocaleString() + ' 阅读</span>' +
+                '</div>' +
+                '<div class="article-tags">' + tagsHtml + '</div>' +
+                '<blockquote class="article-excerpt">' + post.excerpt + '</blockquote>' +
+                '</header>' +
+
+                // 正文
+                '<div class="article-content">' + content + '</div>' +
+
+                // 分享
+                '<div class="share-section">' +
+                '<p>觉得有帮助？分享给更多需要的人 👇</p>' +
+                '<div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">' +
+                '<a href="https://twitter.com/intent/tweet?url=' + shareUrl + '&text=' + encodeURIComponent(post.title) + '" target="_blank" class="btn btn-secondary" style="text-decoration:none;font-size:0.8rem;">𝕏 分享到 Twitter</a>' +
+                '<a href="https://www.facebook.com/sharer/sharer.php?u=' + shareUrl + '" target="_blank" class="btn btn-secondary" style="text-decoration:none;font-size:0.8rem;">f 分享到 Facebook</a>' +
+                '<a href="https://service.weibo.com/share/share.php?url=' + shareUrl + '" target="_blank" class="btn btn-secondary" style="text-decoration:none;font-size:0.8rem;">💬 分享到微博</a>' +
+                '</div></div>' +
+
+                // 上一篇/下一篇
+                navHtml +
+                '</article>' +
+
+                // 右栏（目录）
+                '<aside class="toc-sidebar" id="tocSidebar">' +
+                '<h4>📑 文章目录</h4>' +
+                '<div id="tocContent"></div>' +
+                '</aside>';
+
+            document.getElementById('postPage').innerHTML = html;
+
+            // 生成目录
+            buildTOC(content);
+        }
+
+        // 生成文章目录
+        function buildTOC(content) {
+            var temp = document.createElement('div');
+            temp.innerHTML = content;
+            var headings = temp.querySelectorAll('h2');
+            if (headings.length === 0) {
+                document.getElementById('tocSidebar').style.display = 'none';
+                return;
+            }
+            var tocHtml = '<ul class="toc-list">';
+            headings.forEach(function(h) {
+                var id = 'heading-' + h.textContent.trim().toLowerCase().replace(/[^\w\u4e00-\u9fa5]+/g, '-');
+                h.id = id;
+                tocHtml += '<li><a href="#' + id + '">' + h.textContent + '</a></li>';
+            });
+            tocHtml += '</ul>';
+            document.getElementById('tocContent').innerHTML = tocHtml;
+        }
+
+        // 渲染 404
+        function render404() {
+            document.getElementById('postPage').innerHTML =
+                '<article class="article-layout" style="grid-column:1/-1;">' +
+                '<a href="blog.html" class="back-link">← 返回博客列表</a>' +
+                '<div style="text-align:center;padding:80px 0;">' +
+                '<div style="font-size:4rem;margin-bottom:16px;">🔍</div>' +
+                '<h1 style="font-size:1.8rem;margin-bottom:8px;">文章未找到</h1>' +
+                '<p style="color:var(--text-muted);margin-bottom:24px;">id 为「' + postId + '」的文章不存在</p>' +
+                '<a href="blog.html" class="btn btn-primary" style="text-decoration:none;">← 浏览全部文章</a>' +
+                '</div></article>';
+        }
+
+        // 加载数据
+        Promise.all([
+            fetch('data/posts.json').then(function(r){ return r.json(); }),
+            fetch('data/posts-content.json').then(function(r){ return r.json(); })
+        ]).then(function(results) {
+            var posts = results[0].posts;
+            var contentMap = results[1];
+            postsData = posts;
+            postContent = contentMap;
+
+            currentPost = posts.find(function(p){ return p.id === postId; });
+            if (currentPost && contentMap[postId]) {
+                renderPage(currentPost, contentMap[postId].content || contentMap[postId], posts);
+            } else {
+                render404();
+            }
+        }).catch(function() {
+            document.getElementById('postPage').innerHTML =
+                '<article class="article-layout" style="grid-column:1/-1;text-align:center;padding:80px 0;">' +
+                '<div style="font-size:4rem;margin-bottom:16px;">⚠️</div>' +
+                '<h1 style="font-size:1.5rem;margin-bottom:8px;">数据加载失败</h1>' +
+                '<p style="color:var(--text-muted);">请检查 data/posts.json 和 data/posts-content.json 是否存在</p>' +
+                '</article>';
+        });
+    })();
+    </script>
+
+    <!-- 搜索弹窗 + 回到顶部 -->
+    <div class="search-overlay" id="searchOverlay" onclick="if(event.target.id==='searchOverlay'){closeSearch()}">
+        <div class="search-modal" onclick="event.stopPropagation()">
+            <input class="search-modal-input" type="text" placeholder="搜索页面..." id="searchInput" autocomplete="off">
+            <div class="search-results" id="searchResults"><div class="search-empty">输入关键词开始搜索...</div></div>
+            <div class="search-modal-footer">
+                <span><kbd>↑</kbd><kbd>↓</kbd> 导航</span>
+                <span><kbd>Enter</kbd> 跳转</span>
+                <span><kbd>Esc</kbd> 关闭</span>
+            </div>
+        </div>
+    </div>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">⬆</button>
+    <script>
+    (function(){
+        var si=document.getElementById("searchInput"),sr=document.getElementById("searchResults"),sel=-1;
+        var sd=[{title:"首页",desc:"OpenAtom Club 官方网站首页",icon:"🏠",url:"index.html"},{title:"博客",desc:"技术文章、教程与经验分享",icon:"📝",url:"blog.html"},{title:"资源中心",desc:"开发工具、学习路线、书籍推荐",icon:"🎓",url:"resources.html"}];
+        if(si){si.addEventListener("input",function(){var kw=this.value.trim().toLowerCase();sel=-1;if(!kw){sr.innerHTML='<div class="search-empty">输入关键词开始搜索...</div>';return;}var f=sd.filter(function(i){return i.title.toLowerCase().includes(kw)||i.desc.toLowerCase().includes(kw);});if(!f.length){sr.innerHTML='<div class="search-empty">没有找到相关结果</div>';return;}sr.innerHTML=f.map(function(item){return '<div class="search-result-item" onclick="location.href=\''+item.url+'\'"><span class="search-result-icon">'+item.icon+'</span><div class="search-result-info"><h4>'+item.title+'</h4><p>'+item.desc+'</p></div></div>';}).join("");});si.addEventListener("keydown",function(e){var items=sr.querySelectorAll(".search-result-item");if(e.key==="ArrowDown"){sel=Math.min(sel+1,items.length-1);items.forEach(function(el,i){el.classList.toggle("selected",i===sel);});if(sel>=0)items[sel].scrollIntoView({block:"nearest"});e.preventDefault();}else if(e.key==="ArrowUp"){sel=Math.max(sel-1,-1);items.forEach(function(el,i){el.classList.toggle("selected",i===sel);});e.preventDefault();}else if(e.key==="Enter"&&sel>=0){items[sel].click();}else if(e.key==="Escape"){closeSearch();}});}
+        document.addEventListener("keydown",function(e){if((e.ctrlKey||e.metaKey)&&e.key==="k"){e.preventDefault();document.getElementById("searchOverlay").classList.add("active");document.getElementById("searchInput").focus();}});
+        window.closeSearch=function(){var ov=document.getElementById("searchOverlay");if(ov)ov.classList.remove("active");var inp=document.getElementById("searchInput");if(inp)inp.value="";var res=document.getElementById("searchResults");if(res)res.innerHTML='<div class="search-empty">输入关键词开始搜索...</div>';sel=-1;};
+    })();
+    </script>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 OpenAtom Club · <a href="blog.html">博客</a> · <a href="index.html">首页</a></p>
+        </div>
+    </footer>
+</body>
+</html>

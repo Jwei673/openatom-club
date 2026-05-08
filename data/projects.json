@@ -1,0 +1,108 @@
+{
+  "projects": [
+    {
+      "id": "openatom-web",
+      "name": "OpenAtom Web",
+      "shortDesc": "社团官网 - Vue 3 + Vite 构建的响应式站点",
+      "category": "frontend",
+      "status": "active",
+      "lang": "Vue 3",
+      "stars": 128,
+      "forks": 34,
+      "tags": ["Vue 3", "Vite", "TypeScript", "CSS3"],
+      "readme": "https://raw.githubusercontent.com/Jwei673/openatom-club/main/README.md",
+      "repo": "https://github.com/Jwei673/openatom-club",
+      "progress": 85,
+      "milestones": [
+        { "done": "首页 + 响应式布局", "date": "2026-04" },
+        { "done": "成员/项目/博客页面", "date": "2026-05" },
+        { "done": "全站搜索 + 主题切换", "date": "2026-05" },
+        { "todo": "SSR 优化 + SEO", "date": "2026-06" },
+        { "todo": "国际化 (i18n)", "date": "2026-07" }
+      ],
+      "members": ["王浩", "陈婷婷", "周芷若"],
+      "contributors": ["张明", "李雪"],
+      "updates": [
+        { "date": "2026-05-08", "text": "新增资源中心页、全站深/浅主题切换、Ctrl+K 搜索功能" },
+        { "date": "2026-05-07", "text": "完成活动中心页和博客页，含搜索分类分页" },
+        { "date": "2026-04-28", "text": "GitHub Pages 部署上线，v1.0 正式发布" }
+      ]
+    },
+    {
+      "id": "openatom-api",
+      "name": "OpenAtom API",
+      "shortDesc": "社团后端服务 - Go + Gin 框架，提供 RESTful API",
+      "category": "backend",
+      "status": "active",
+      "lang": "Go",
+      "stars": 56,
+      "forks": 12,
+      "tags": ["Go", "Gin", "PostgreSQL", "Redis", "JWT"],
+      "repo": "https://github.com/Jwei673/openatom-api",
+      "progress": 60,
+      "milestones": [
+        { "done": "基础框架 + 用户认证", "date": "2026-03" },
+        { "done": "活动管理 API", "date": "2026-04" },
+        { "todo": "博客 API + 评论系统", "date": "2026-05" },
+        { "todo": "WebSocket 实时通知", "date": "2026-06" },
+        { "todo": "Docker 部署 + K8s 配置", "date": "2026-07" }
+      ],
+      "members": ["张明", "赵文博", "吴磊"],
+      "contributors": [],
+      "updates": [
+        { "date": "2026-05-01", "text": "新增 Redis 缓存层，API 响应速度提升 300%" },
+        { "date": "2026-04-15", "text": "完成 JWT 认证 + 权限中间件" }
+      ]
+    },
+    {
+      "id": "openatom-docs",
+      "name": "OpenAtom Docs",
+      "shortDesc": "社团技术文档站 - VitePress 构建，支持 Markdown",
+      "category": "docs",
+      "status": "active",
+      "lang": "VitePress",
+      "stars": 89,
+      "forks": 22,
+      "tags": ["VitePress", "Markdown", "Vue 3", "Docs"],
+      "repo": "https://github.com/Jwei673/openatom-docs",
+      "progress": 70,
+      "milestones": [
+        { "done": "VitePress 初始化 + 主题定制", "date": "2026-03" },
+        { "done": "Git 入门教程 + 贡献指南", "date": "2026-04" },
+        { "done": "Web 开发入门系列", "date": "2026-05" },
+        { "todo": "后端开发入门系列", "date": "2026-06" },
+        { "todo": "DevOps 实战系列", "date": "2026-07" }
+      ],
+      "members": ["李明辉", "林志远", "何敏"],
+      "contributors": ["王浩", "陈婷婷"],
+      "updates": [
+        { "date": "2026-05-05", "text": "新增《Vue 3 组件化开发实战》文档" },
+        { "date": "2026-04-20", "text": "Git 入门系列完结，含 10 篇教程" }
+      ]
+    },
+    {
+      "id": "openatom-infra",
+      "name": "OpenAtom Infra",
+      "shortDesc": "社团基础设施 - Docker + CI/CD 自动化部署",
+      "category": "devops",
+      "status": "planning",
+      "lang": "DevOps",
+      "stars": 23,
+      "forks": 5,
+      "tags": ["Docker", "GitHub Actions", "Nginx", "Linux"],
+      "repo": "https://github.com/Jwei673/openatom-infra",
+      "progress": 30,
+      "milestones": [
+        { "done": "Docker Compose 本地开发环境", "date": "2026-04" },
+        { "todo": "GitHub Actions 自动构建流水线", "date": "2026-05" },
+        { "todo": "生产环境 Docker Swarm 部署", "date": "2026-06" },
+        { "todo": "监控告警体系 (Prometheus)", "date": "2026-07" }
+      ],
+      "members": ["李雪", "高建"],
+      "contributors": [],
+      "updates": [
+        { "date": "2026-04-30", "text": "Docker Compose 本地开发环境搭建完成" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目详情 - OpenAtom Club</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ========== 项目详情页专属样式 ========== */
+
+        /* 项目主 Hero */
+        .project-hero {
+            padding: 32px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+
+        .project-hero-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .project-hero-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .project-hero-title .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .status-active { background: #3fb950; box-shadow: 0 0 8px rgba(63,185,80,0.6); }
+        .status-planning { background: var(--accent-orange); }
+        .status-maintenance { background: var(--accent-blue); }
+        .status-archived { background: var(--text-muted); }
+
+        .project-hero-meta {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .project-hero-meta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .project-hero-meta a:hover { opacity: 0.8; }
+
+        .project-hero-meta .btn-star {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        .project-hero-meta .btn-fork {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-primary);
+        }
+
+        .project-short-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .project-progress-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .project-progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .project-progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--accent-green), #2ea043);
+            transition: width 0.6s ease;
+        }
+
+        .project-progress-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            min-width: 36px;
+            text-align: right;
+        }
+
+        .project-progress-title {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        /* 左右分栏 */
+        .project-body {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        /* 里程碑时间轴 */
+        .milestone-timeline {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 24px;
+        }
+
+        .milestone-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-primary);
+        }
+
+        .milestone-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .milestone-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--bg-primary);
+        }
+
+        .milestone-item.done::before {
+            background: var(--accent-green);
+        }
+
+        .milestone-item.todo::before {
+            background: var(--bg-tertiary);
+            border-color: var(--border-primary);
+        }
+
+        .milestone-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .milestone-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .milestone-item.todo .milestone-text {
+            color: var(--text-muted);
+        }
+
+        /* 成员卡片 */
+        .section-title-sm {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .member-avatar-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .member-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 10px;
+        }
+
+        .member-row-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .member-row-info {
+            flex: 1;
+        }
+
+        .member-row-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .member-row-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .member-row-badge {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .badge-leader {
+            background: rgba(63,185,80,0.15);
+            color: var(--accent-green);
+        }
+
+        .badge-contributor {
+            background: rgba(31,111,235,0.15);
+            color: var(--accent-blue);
+        }
+
+        /* 更新日志 */
+        .update-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .update-item {
+            display: flex;
+            gap: 12px;
+            padding: 14px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 10px;
+        }
+
+        .update-date-badge {
+            padding: 4px 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            white-space: nowrap;
+            height: fit-content;
+        }
+
+        .update-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* 项目列表（侧栏） */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .project-list-item {
+            padding: 14px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s, transform 0.2s;
+            display: block;
+        }
+
+        .project-list-item:hover {
+            border-color: var(--accent-green);
+            transform: translateX(2px);
+        }
+
+        .project-list-item.active {
+            border-color: var(--accent-green);
+            background: rgba(35,134,54,0.1);
+        }
+
+        .project-list-item h4 {
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .project-list-item p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .project-list-lang {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* 侧栏其他 */
+        .sidebar-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-primary);
+            font-size: 0.85rem;
+        }
+
+        .sidebar-stat:last-child { border-bottom: none; }
+
+        .sidebar-stat-key { color: var(--text-muted); }
+        .sidebar-stat-val { font-weight: 700; }
+
+        /* 未找到项目 */
+        .not-found {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .not-found-icon { font-size: 4rem; margin-bottom: 16px; }
+        .not-found h2 { font-size: 1.5rem; margin-bottom: 8px; }
+        .not-found p { color: var(--text-muted); margin-bottom: 24px; }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .project-body { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">⚛️</span>
+                <span class="logo-text">OpenAtom Club</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="members.html" class="nav-link">成员</a></li>
+                <li><a href="projects.html" class="nav-link active">项目</a></li>
+                <li><a href="docs/index.html" class="nav-link">文档</a></li>
+                <li><a href="events.html" class="nav-link">活动</a></li>
+                <li><a href="blog.html" class="nav-link">博客</a></li>
+                <li><a href="resources.html" class="nav-link">资源</a></li>
+                <li><a href="architecture.html" class="nav-link">架构</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌙</button></li>
+                <li><a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">⭐ Star</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <div class="main-layout">
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h3>📂 所有项目</h3>
+                <div class="project-list" id="sidebarProjectList">
+                    <!-- JS 渲染 -->
+                    <div style="color: var(--text-muted); font-size: 0.8rem; text-align: center; padding: 20px;">加载中...</div>
+                </div>
+            </div>
+            <div class="sidebar-card">
+                <h3>📊 项目信息</h3>
+                <div id="sidebarStats">
+                    <!-- JS 渲染 -->
+                </div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <!-- 项目详情（JS 动态填充） -->
+            <div id="projectDetail">
+                <div class="not-found">
+                    <div class="not-found-icon">⏳</div>
+                    <h2>加载中...</h2>
+                    <p>正在获取项目数据</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="shared.js"></script>
+
+    <script>
+    (function() {
+        var allProjects = [];
+        var currentId = new URLSearchParams(location.search).get('id') || '';
+
+        // 渲染侧边栏项目列表
+        function renderSidebarList(projects) {
+            var el = document.getElementById('sidebarProjectList');
+            el.innerHTML = projects.map(function(p) {
+                var active = p.id === currentId ? ' active' : '';
+                return '<a href="project.html?id=' + p.id + '" class="project-list-item' + active + '">' +
+                    '<h4>' + getLangEmoji(p.lang) + ' ' + p.name + '</h4>' +
+                    '<p>' + p.shortDesc + '</p>' +
+                    '<div class="project-list-lang">⭐ ' + p.stars + ' · ' + p.lang + '</div>' +
+                    '</a>';
+            }).join('');
+        }
+
+        // 渲染侧边栏统计
+        function renderSidebarStats(p) {
+            var el = document.getElementById('sidebarStats');
+            var statusMap = { active: '🟢 开发中', planning: '🟡 规划中', maintenance: '🔵 维护中', archived: '⚪ 已归档' };
+            var langColors = {
+                'Vue 3': '#42b883', 'Go': '#00add8', 'VitePress': '#5FAE03',
+                'DevOps': '#2496ed', 'TypeScript': '#3178c6'
+            };
+            el.innerHTML =
+                '<div class="sidebar-stat"><span class="sidebar-stat-key">语言</span><span class="sidebar-stat-val" style="color:' + (langColors[p.lang]||'var(--text-primary)') + '">' + p.lang + '</span></div>' +
+                '<div class="sidebar-stat"><span class="sidebar-stat-key">状态</span><span class="sidebar-stat-val">' + (statusMap[p.status]||p.status) + '</span></div>' +
+                '<div class="sidebar-stat"><span class="sidebar-stat-key">⭐ Star</span><span class="sidebar-stat-val">' + p.stars + '</span></div>' +
+                '<div class="sidebar-stat"><span class="sidebar-stat-key">🍴 Fork</span><span class="sidebar-stat-val">' + p.forks + '</span></div>' +
+                '<div class="sidebar-stat"><span class="sidebar-stat-key">👥 成员</span><span class="sidebar-stat-val">' + p.members.length + '</span></div>' +
+                '<div class="sidebar-stat"><span class="sidebar-stat-key">📈 进度</span><span class="sidebar-stat-val" style="color:var(--accent-green)">' + p.progress + '%</span></div>';
+        }
+
+        // 渲染项目详情
+        function renderDetail(p) {
+            document.title = p.name + ' - OpenAtom Club';
+
+            var statusMap = { active: 'active', planning: 'planning', maintenance: 'maintenance', archived: 'archived' };
+            var statusTextMap = { active: '🟢 开发中', planning: '🟡 规划中', maintenance: '🔵 维护中', archived: '⚪ 已归档' };
+
+            var doneMilestones = p.milestones.filter(function(m){ return !m.todo; });
+            var todoMilestones = p.milestones.filter(function(m){ return m.todo; });
+
+            var membersHtml = p.members.map(function(n) {
+                return '<div class="member-row">' +
+                    '<div class="member-row-avatar">' + getInitials(n) + '</div>' +
+                    '<div class="member-row-info"><div class="member-row-name">' + n + '</div><div class="member-row-role">核心成员</div></div>' +
+                    '<span class="member-row-badge badge-leader">PM</span></div>';
+            }).join('');
+
+            if (p.contributors && p.contributors.length) {
+                membersHtml += p.contributors.map(function(n) {
+                    return '<div class="member-row">' +
+                        '<div class="member-row-avatar">' + getInitials(n) + '</div>' +
+                        '<div class="member-row-info"><div class="member-row-name">' + n + '</div><div class="member-row-role">贡献者</div></div>' +
+                        '<span class="member-row-badge badge-contributor">Contributor</span></div>';
+                }).join('');
+            }
+
+            var updatesHtml = p.updates.map(function(u) {
+                return '<div class="update-item">' +
+                    '<span class="update-date-badge">' + u.date + '</span>' +
+                    '<p class="update-text">' + u.text + '</p></div>';
+            }).join('');
+
+            var html =
+                '<div class="project-hero">' +
+                '<div class="project-hero-header">' +
+                '<div class="project-hero-title">' +
+                '<span class="status-dot status-' + statusMap[p.status] + '"></span>' +
+                getLangEmoji(p.lang) + ' ' + p.name +
+                '</div>' +
+                '<div class="project-hero-meta">' +
+                '<a href="' + p.repo + '" target="_blank" class="btn-star">⭐ Star ' + p.stars + '</a>' +
+                '<a href="' + p.repo + '" target="_blank" class="btn-fork">🍴 Fork</a>' +
+                '</div></div>' +
+                '<p class="project-short-desc">' + p.shortDesc + '</p>' +
+                '<div class="project-tags">' + p.tags.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('') + '</div>' +
+                '<div class="project-progress-title">项目进度</div>' +
+                '<div class="project-progress-wrap">' +
+                '<div class="project-progress-bar"><div class="project-progress-fill" style="width:0%" id="progressFill"></div></div>' +
+                '<span class="project-progress-label">' + p.progress + '%</span></div></div>' +
+
+                '<div class="project-body">' +
+                // 左栏
+                '<div>' +
+                // 里程碑
+                '<div class="feature-card" style="margin-bottom:20px;">' +
+                '<h3 class="section-title-sm">📍 里程碑</h3>' +
+                '<div class="milestone-timeline">' +
+                doneMilestones.map(function(m){
+                    return '<div class="milestone-item done"><div class="milestone-date">' + m.date + '</div><div class="milestone-text">' + m.text || m.todo + '</div></div>';
+                }).join('') +
+                todoMilestones.map(function(m){
+                    return '<div class="milestone-item todo"><div class="milestone-date">' + m.date + '</div><div class="milestone-text">' + (m.todo||'') + '</div></div>';
+                }).join('') +
+                '</div></div>' +
+
+                // 成员
+                '<div class="feature-card" style="margin-bottom:20px;">' +
+                '<h3 class="section-title-sm">👥 项目成员</h3>' +
+                '<div class="member-avatar-list">' + membersHtml + '</div></div>' +
+
+                // 更新日志
+                '<div class="feature-card">' +
+                '<h3 class="section-title-sm">📝 更新日志</h3>' +
+                '<div class="update-list">' + updatesHtml + '</div></div>' +
+                '</div>' +
+
+                // 右栏（空，由侧边栏接管）
+                '<aside class="sidebar" style="position:static;width:auto;"></aside>' +
+                '</div>';
+
+            document.getElementById('projectDetail').innerHTML = html;
+
+            // 进度条动画
+            setTimeout(function() {
+                var fill = document.getElementById('progressFill');
+                if (fill) fill.style.width = p.progress + '%';
+            }, 100);
+        }
+
+        function getLangEmoji(lang) {
+            var map = {
+                'Vue 3': '💚', 'Go': '🔵', 'VitePress': '📖',
+                'DevOps': '🚀', 'Python': '🐍', 'TypeScript': '📘'
+            };
+            return map[lang] || '📦';
+        }
+
+        function getInitials(name) {
+            return name.split('').slice(0, 2).join('');
+        }
+
+        // 加载数据
+        fetch('data/projects.json').then(function(r){ return r.json(); }).then(function(data) {
+            allProjects = data.projects;
+            renderSidebarList(allProjects);
+            var p = allProjects.find(function(x){ return x.id === currentId; });
+            if (p) {
+                renderSidebarStats(p);
+                renderDetail(p);
+            } else {
+                document.getElementById('projectDetail').innerHTML =
+                    '<div class="not-found"><div class="not-found-icon">🔍</div>' +
+                    '<h2>项目未找到</h2>' +
+                    '<p>id 为「' + currentId + '」的项目不存在</p>' +
+                    '<a href="projects.html" class="btn btn-primary">← 返回项目列表</a></div>';
+            }
+        }).catch(function() {
+            document.getElementById('projectDetail').innerHTML =
+                '<div class="not-found"><div class="not-found-icon">⚠️</div>' +
+                '<h2>数据加载失败</h2><p>请检查 data/projects.json 是否存在</p></div>';
+        });
+    })();
+    </script>
+
+    <!-- 搜索弹窗 + 回到顶部 -->
+    <div class="search-overlay" id="searchOverlay" onclick="if(event.target.id==='searchOverlay'){closeSearch()}">
+        <div class="search-modal" onclick="event.stopPropagation()">
+            <input class="search-modal-input" type="text" placeholder="搜索页面..." id="searchInput" autocomplete="off">
+            <div class="search-results" id="searchResults"><div class="search-empty">输入关键词开始搜索...</div></div>
+            <div class="search-modal-footer">
+                <span><kbd>↑</kbd><kbd>↓</kbd> 导航</span>
+                <span><kbd>Enter</kbd> 跳转</span>
+                <span><kbd>Esc</kbd> 关闭</span>
+            </div>
+        </div>
+    </div>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">⬆</button>
+    <script>
+    (function(){
+        var si=document.getElementById("searchInput"),sr=document.getElementById("searchResults"),sel=-1;
+        var sd=[
+            {title:"首页",desc:"OpenAtom Club 官方网站首页",icon:"🏠",url:"index.html"},
+            {title:"项目",desc:"社团正在开发的项目展示",icon:"🚀",url:"projects.html"},
+            {title:"博客",desc:"技术文章、教程与经验分享",icon:"📝",url:"blog.html"},
+        ];
+        if(si){si.addEventListener("input",function(){
+            var kw=this.value.trim().toLowerCase();sel=-1;
+            if(!kw){sr.innerHTML='<div class="search-empty">输入关键词开始搜索...</div>';return;}
+            var f=sd.filter(function(i){return i.title.toLowerCase().includes(kw)||i.desc.toLowerCase().includes(kw);});
+            if(!f.length){sr.innerHTML='<div class="search-empty">没有找到相关结果</div>';return;}
+            sr.innerHTML=f.map(function(item){return '<div class="search-result-item" onclick="location.href=\''+item.url+'\'"><span class="search-result-icon">'+item.icon+'</span><div class="search-result-info"><h4>'+item.title+'</h4><p>'+item.desc+'</p></div></div>';}).join("");
+        });si.addEventListener("keydown",function(e){
+            var items=sr.querySelectorAll(".search-result-item");
+            if(e.key==="ArrowDown"){sel=Math.min(sel+1,items.length-1);items.forEach(function(el,i){el.classList.toggle("selected",i===sel);});if(sel>=0)items[sel].scrollIntoView({block:"nearest"});e.preventDefault();}
+            else if(e.key==="ArrowUp"){sel=Math.max(sel-1,-1);items.forEach(function(el,i){el.classList.toggle("selected",i===sel);});e.preventDefault();}
+            else if(e.key==="Enter"&&sel>=0){items[sel].click();}
+            else if(e.key==="Escape"){closeSearch();}
+        });}
+        document.addEventListener("keydown",function(e){if((e.ctrlKey||e.metaKey)&&e.key==="k"){e.preventDefault();document.getElementById("searchOverlay").classList.add("active");document.getElementById("searchInput").focus();}});
+        window.closeSearch=function(){
+            var ov=document.getElementById("searchOverlay");
+            if(ov)ov.classList.remove("active");
+            var inp=document.getElementById("searchInput");
+            if(inp)inp.value="";
+            var res=document.getElementById("searchResults");
+            if(res)res.innerHTML='<div class="search-empty">输入关键词开始搜索...</div>';
+            sel=-1;
+        };
+    })();
+    </script>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 OpenAtom Club · <a href="projects.html">项目</a> · <a href="blog.html">博客</a></p>
+        </div>
+    </footer>
+</body>
+</html>
