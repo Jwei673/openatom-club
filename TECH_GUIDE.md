@@ -350,3 +350,264 @@ document.querySelectorAll('.feature-card').forEach(function(card) {
 ```
 
 **好处**：
+
+**好处**：
+- 性能好：不需要持续监听滚动事件
+- 体验佳：用户看到元素时动画才触发
+- 省代码：浏览器自动处理阈值判断
+
+---
+
+## 四、响应式设计（手机也能看）
+
+### 1. 核心问题：屏幕大小不一样怎么办？
+
+电脑屏幕：1920px × 1080px   左边放导航，右边放内容 OK
+手机屏幕：375px × 667px     同样布局会被挤扁，无法阅读
+
+解决：检测屏幕宽度，不同宽度用不同布局
+
+### 2. 媒体查询（Media Query）
+
+CSS 提供 @media 规则，可以"当屏幕满足某个条件时"才应用样式：
+
+/* 默认样式（桌面端） */
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+/* 当屏幕宽度 <= 768px 时（平板/手机） */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* 当屏幕宽度 <= 480px 时（小手机） */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 8px;
+  }
+}
+
+常见断点：
+
+| 断点 | 设备 | CSS 写法 |
+|------|------|----------|
+| <= 480px | 小手机 | @media (max-width: 480px) |
+| <= 768px | 平板手机 | @media (max-width: 768px) |
+| <= 1024px | 小笔记本 | @media (max-width: 1024px) |
+
+### 3. Flexbox 布局
+
+Flexbox = 弹性盒子，让布局更简单：
+
+/* 父容器：开启 Flexbox */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 子元素 */
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+### 4. 图片响应式
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+效果：图片在小屏幕上会自动缩小，不会溢出屏幕。
+
+---
+
+## 五、缓存优化（让网站更快）
+
+### 1. 什么是缓存？
+
+缓存 = 把常用的数据临时存起来，下次用时不用再下载。
+
+无缓存：每次打开页面，都要从服务器下载所有文件（慢）
+有缓存：第一次下载后存在本地，之后直接用本地的（快）
+
+### 2. localStorage（本地存储）
+
+浏览器提供的一块"持久化存储空间"，即使关掉浏览器再打开，数据还在。
+
+// 保存数据
+localStorage.setItem('theme', 'dark');
+// 读取数据
+var theme = localStorage.getItem('theme');
+// 删除数据
+localStorage.removeItem('theme');
+
+我们用 localStorage 做什么？
+- 记住用户的主题偏好（深色/亮色）
+- 下次打开页面，自动恢复上次设置
+
+### 3. SessionStorage（会话存储）
+
+和 localStorage 类似，但关闭浏览器就没了（会话结束即清除）。
+
+// 保存搜索历史（关掉就没了）
+sessionStorage.setItem('lastSearch', 'Vue3');
+
+### 4. GitHub Pages 缓存策略
+
+GitHub Pages 自带 CDN 和浏览器缓存：
+- 用户第一次访问 → 下载所有文件
+- 用户第二次访问 → 浏览器直接从本地缓存读取（毫秒级）
+- 文件更新了 → GitHub 自动更新缓存版本
+
+---
+
+## 六、答辩 Q&A 预演
+
+### Q1：为什么选择静态网站？不用后端吗？
+
+参考回答：
+社团官网内容相对固定，不需要实时数据库。静态网站有几个优势：
+- 免费托管：GitHub Pages 完全免费，每年省几百元服务器费用
+- 速度快：静态文件直接返回，无需服务器处理，用户体验好
+- 安全：没有数据库、没有后台，黑客无法注入 SQL、没有服务器漏洞
+- 维护简单：改内容只需要改 JSON 文件，不需要登录服务器
+- 适合开源社团：代码开源、部署开源，完全透明
+
+### Q2：JSON 数据文件的格式是怎么设计的？
+
+参考回答：
+我们采用了"前台数据结构化"的设计思路：
+- 每个实体（成员、项目、文章）对应一个 JSON 文件
+- 字段命名统一规范，如 id、name、description、tags 等
+- 数组类型字段（如 tags）用方括号 [] 表示
+- 这样做的好处是数据与展示分离，新成员添加内容不需要懂代码
+
+### Q3：URL 参数 ?id=xxx 是什么原理？
+
+参考回答：
+这叫"查询参数"，是 URL 的一部分。比如：
+- project.html → 打开项目详情页
+- project.html?id=openatom-web → 打开 id 为 openatom-web 的项目详情
+
+JavaScript 通过 URLSearchParams API 解析参数，找到对应的数据 ID，
+再到 JSON 文件里查询匹配的项目，最后动态渲染页面内容。
+这样只需要一个 HTML 文件就能展示无限多个项目详情。
+
+### Q4：CSS 动画会不会影响性能？
+
+参考回答：
+我们做了性能优化：
+- 只用 transform 和 opacity 两个属性做动画，这两个是浏览器专门优化过的，不会触发"重排"
+- 使用 will-change: transform 提示浏览器提前准备
+- 用 IntersectionObserver 代替滚动事件，避免滚动时频繁触发动画
+- 动画都有 prefers-reduced-motion 适配，视力障碍用户可关闭动画
+
+### Q5：深色主题是怎么实现的？
+
+参考回答：
+用的是 CSS 自定义属性（变量）配合类名切换：
+- :root 定义深色主题的默认值
+- body.light 类覆盖为亮色主题的值
+- 切换时只需要给 body 标签添加/移除 light 类，所有用变量的地方自动变色
+- 主题偏好用 localStorage 持久保存，下次访问自动恢复
+
+### Q6：网站部署的流程是什么？
+
+参考回答：
+整个部署流程自动化：
+1. 开发者本地编写代码（HTML/CSS/JS）
+2. 用 Git 提交：git commit
+3. 推送到 GitHub：git push
+4. GitHub Pages 自动检测到 main 分支有新提交
+5. 网站自动更新到：https://Jwei673.github.io/openatom-club/
+全程不需要手动操作服务器，每次 push 代码网站自动更新。
+
+### Q7：浏览器兼容性问题考虑过吗？
+
+参考回答：
+考虑了：
+- CSS 变量（:root / var()）支持所有现代浏览器
+- IntersectionObserver 支持率已达 95%+
+- GitHub Pages 默认启用 HTTPS，所有浏览器都兼容
+- 用 Flexbox 而非 Grid（Flexbox 兼容性更好）
+- 没有使用任何实验性 CSS 属性
+
+### Q8：为什么用 fetch 而不用 AJAX？
+
+参考回答：
+fetch 是现代浏览器内置的 API，相比老旧的 XMLHttpRequest（AJAX）：
+- 语法更简洁：fetch(url).then(r => r.json())
+- 支持 Promise，代码更好读
+- 是 Web 标准，未来不会被淘汰
+- 不需要引入任何第三方库
+
+### Q9：网站有哪些安全措施？
+
+参考回答：
+静态网站天然更安全：
+- 无数据库：没有 SQL 注入风险
+- 无后端：没有服务器漏洞
+- GitHub 托管：GitHub 负责服务器安全和 DDoS 防护
+- HTTPS 强制：GitHub Pages 自动启用 HTTPS
+- GitHub Secret Scanning：自动扫描敏感信息泄露
+
+### Q10：如果要加新功能，你会怎么做？
+
+参考回答：
+分步骤来做：
+1. 需求分析：确定新功能要解决什么问题
+2. 数据设计：如果涉及内容，先设计 JSON 数据结构
+3. 页面结构：用 HTML 写出页面骨架
+4. 样式实现：用 CSS 写样式，复用已有的 .card / .btn 等类名
+5. 交互逻辑：用 JavaScript 实现动态效果
+6. 本地测试：浏览器打开测试
+7. Git 提交：git add -> git commit -m "feat: 添加xxx功能"
+8. 推送部署：git push，等待 GitHub Pages 自动更新
+
+---
+
+## 七、技术栈总结
+
+| 类别 | 技术 | 说明 |
+|------|------|------|
+| 页面结构 | HTML5 | 语义化标签（header/nav/section/article/footer） |
+| 样式美化 | CSS3 | Flexbox / 变量 / 动画 / 响应式 |
+| 交互逻辑 | Vanilla JS | 原生 JavaScript（无框架依赖） |
+| 数据存储 | JSON | 纯文本数据文件，浏览器原生解析 |
+| 版本控制 | Git + GitHub | 代码历史 + 协作 + 备份 |
+| 托管服务 | GitHub Pages | 免费 CDN + HTTPS + 自动部署 |
+| 编辑器 | VS Code | 轻量、免费、插件丰富 |
+
+为什么不用框架（如 Vue/React）？
+- 社团官网体量小，不需要复杂的状态管理
+- 纯 HTML/CSS/JS 更简单透明，答辩时能解释每一行代码
+- 零依赖、无构建步骤，改完直接 push 就能看效果
+- 对初学者更友好，方便学习和理解原理
+
+---
+
+## 八、参考资源
+
+- MDN Web Docs - JavaScript 教程
+  https://developer.mozilla.org/zh-CN/docs/Web/JavaScript
+- CSS Tricks - Flexbox 完全指南
+  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+- GitHub Pages 官方文档
+  https://docs.github.com/en/pages
+- JSON 格式化工具（写 JSON 时验证格式）
+  https://jsonformatter.curiousconcept.com/
+- Can I Use（查看浏览器兼容性）
+  https://caniuse.com/
+
+---
+
+文档版本：v1.0 | 最后更新：2026-05-08 | 适配项目：OpenAtom Club 官网
