@@ -1203,6 +1203,19 @@ body.light {
 }
 
 /* ========================================
+   亮色模式 - 导航栏适配
+   修复：亮色模式下导航栏仍为深色背景的问题
+   ======================================== */
+body.light .navbar {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-bottom-color: var(--border-primary);
+}
+body.light .navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
    主题切换按钮（增强）
    ======================================== */
 .theme-toggle {
