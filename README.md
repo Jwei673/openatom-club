@@ -80,9 +80,9 @@ cd openatom-club
 
 | 角色 | 姓名 | 简介 |
 |------|------|------|
-| 社长 | Jwei673 | 全栈开发者，热爱开源 |
-| 副社长 | Alice Chen | 前端专家 |
-| 后端负责人 | Bob Wang | Go/Python 开发者 |
+| 社长 |XXX|XXXXXX|
+| 副社长 |XXX|XXXXXX|
+| 后端负责人 |XXX|XXXXXX|
 
 查看更多 → [成员页面](https://Jwei673.github.io/openatom-club/members.html)
 
