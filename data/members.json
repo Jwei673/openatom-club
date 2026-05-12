@@ -1,1 +1,87 @@
-{"committees": [{"id": "tech", "name": "技术部", "icon": "💻", "color": "#238636", "desc": "负责社团所有技术项目的开发与维护，推动开源贡献", "leaders": ["XXX", "XXX"], "members": ["XXX", "XXX", "XXX", "XXX", "XXX"]}, {"id": "operation", "name": "运营部", "icon": "📢", "color": "#1f6feb", "desc": "活动策划、宣传推广、社区运营、对外合作", "leaders": ["XXX", "XXX"], "members": ["XXX", "XXX", "XXX", "XXX"]}, {"id": "education", "name": "教育部", "icon": "📚", "color": "#a371f7", "desc": "技术分享、教程编写、学习路线规划、新人培养", "leaders": ["XXX", "XXX"], "members": ["XXX", "XXX", "XXX", "XXX"]}, {"id": "media", "name": "媒体部", "icon": "🎨", "color": "#f78166", "desc": "官网维护、视觉设计、短视频运营、新媒体内容创作", "leaders": ["XXX"], "members": ["XXX", "XXX", "XXX", "XXX"]}], "groups": [{"id": "frontend", "name": "前端小组", "icon": "🖥️", "parent": "tech", "members": ["XXX", "XXX", "XXX"], "tags": ["Vue", "React", "TypeScript"], "project": "openatom-web"}, {"id": "backend", "name": "后端小组", "icon": "⚙️", "parent": "tech", "members": ["XXX", "XXX", "XXX"], "tags": ["Go", "Python", "PostgreSQL"], "project": "openatom-api"}, {"id": "devops", "name": "DevOps 小组", "icon": "🚀", "parent": "tech", "members": ["XXX", "XXX"], "tags": ["Docker", "CI/CD", "Linux"], "project": "openatom-infra"}, {"id": "content", "name": "内容创作组", "icon": "✍️", "parent": "education", "members": ["XXX", "XXX", "XXX"], "tags": ["Markdown", "Docs", "Blog"], "project": "openatom-docs"}]}
+{
+    "committees": [
+        {
+            "id": "competition",
+            "name": "项目竞赛部",
+            "icon": "🏆",
+            "color": "#238636",
+            "desc": "负责组织参与各类技术竞赛、创新创业大赛，孵化竞赛项目",
+            "leaders": ["XXX", "XXX"],
+            "members": ["XXX", "XXX", "XXX", "XXX"]
+        },
+        {
+            "id": "secretary",
+            "name": "秘书部",
+            "icon": "📋",
+            "color": "#1f6feb",
+            "desc": "社团内部协调、会议记录、档案管理、后勤保障",
+            "leaders": ["XXX", "XXX"],
+            "members": ["XXX", "XXX", "XXX", "XXX"]
+        },
+        {
+            "id": "outreach",
+            "name": "外联部",
+            "icon": "🤝",
+            "color": "#a371f7",
+            "desc": "对外合作交流、企业对接赞助、校际社团联络",
+            "leaders": ["XXX", "XXX"],
+            "members": ["XXX", "XXX", "XXX", "XXX"]
+        },
+        {
+            "id": "media",
+            "name": "宣策部",
+            "icon": "🎨",
+            "color": "#f78166",
+            "desc": "宣传策划、视觉设计、新媒体运营、活动物料制作",
+            "leaders": ["XXX", "XXX"],
+            "members": ["XXX", "XXX", "XXX", "XXX"]
+        },
+        {
+            "id": "organization",
+            "name": "组织部",
+            "icon": "📢",
+            "color": "#f0883e",
+            "desc": "活动策划与组织、日常活动安排、成员招募与培训",
+            "leaders": ["XXX", "XXX"],
+            "members": ["XXX", "XXX", "XXX", "XXX"]
+        }
+    ],
+    "groups": [
+        {
+            "id": "frontend",
+            "name": "前端小组",
+            "icon": "🖥️",
+            "parent": "competition",
+            "members": ["XXX", "XXX", "XXX"],
+            "tags": ["Vue", "React", "TypeScript"],
+            "project": "openatom-web"
+        },
+        {
+            "id": "backend",
+            "name": "后端小组",
+            "icon": "⚙️",
+            "parent": "competition",
+            "members": ["XXX", "XXX", "XXX"],
+            "tags": ["Go", "Python", "PostgreSQL"],
+            "project": "openatom-api"
+        },
+        {
+            "id": "devops",
+            "name": "DevOps 小组",
+            "icon": "🚀",
+            "parent": "competition",
+            "members": ["XXX", "XXX"],
+            "tags": ["Docker", "CI/CD", "Linux"],
+            "project": "openatom-infra"
+        },
+        {
+            "id": "content",
+            "name": "内容创作组",
+            "icon": "✍️",
+            "parent": "media",
+            "members": ["XXX", "XXX", "XXX"],
+            "tags": ["Markdown", "Docs", "Blog"],
+            "project": "openatom-docs"
+        }
+    ]
+}
