@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>×éÖ¯¼Ü¹¹ - ³Éµç¿ª·ÅÔ­×Ó¿ªÔ´ÉçÍÅ</title>
+    <title>ç»„ç»‡æ¶æ„ - æˆç”µå¼€æ”¾åŸå­å¼€æºç¤¾å›¢</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* ========== ¼Ü¹¹Ò³×¨ÊôÑùÊ½ ========== */
+        /* ========== æ¶æ„é¡µä¸“å±æ ·å¼ ========== */
 
-        /* ×éÖ¯½á¹¹Í¼ - ºËĞÄÈİÆ÷ */
+        /* ç»„ç»‡ç»“æ„å›¾ - æ ¸å¿ƒå®¹å™¨ */
         .org-chart {
             position: relative;
             padding: 32px;
         }
 
-        /* Ö÷Ï¯/¸ºÔğÈË¿¨Æ¬ */
+        /* ä¸»å¸­/è´Ÿè´£äººå¡ç‰‡ */
         .org-president {
             text-align: center;
             margin-bottom: 48px;
@@ -61,7 +61,7 @@
             letter-spacing: 1px;
         }
 
-        /* ÏòÏÂÁ¬½ÓÏß */
+        /* å‘ä¸‹è¿æ¥çº¿ */
         .org-line-v {
             width: 2px;
             height: 32px;
@@ -90,7 +90,7 @@
         .org-line-h::before { left: 10%; }
         .org-line-h::after { right: 10%; }
 
-        /* ²¿ÃÅÍø¸ñ */
+        /* éƒ¨é—¨ç½‘æ ¼ */
         .dept-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -98,7 +98,7 @@
             margin-bottom: 48px;
         }
 
-        /* ²¿ÃÅ¿¨Æ¬ */
+        /* éƒ¨é—¨å¡ç‰‡ */
         .dept-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-primary);
@@ -175,7 +175,7 @@
             border-color: var(--accent-green);
         }
 
-        /* Ğ¡×éÍø¸ñ */
+        /* å°ç»„ç½‘æ ¼ */
         .group-section-title {
             display: flex;
             align-items: center;
@@ -268,7 +268,7 @@
             margin-top: 12px;
         }
 
-        /* µ×²¿Í³¼Æ */
+        /* åº•éƒ¨ç»Ÿè®¡ */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -296,7 +296,7 @@
             color: var(--text-muted);
         }
 
-        /* ÏìÓ¦Ê½ */
+        /* å“åº”å¼ */
         @media (max-width: 1024px) {
             .dept-grid { grid-template-columns: repeat(2, 1fr); }
             .group-grid { grid-template-columns: 1fr; }
@@ -310,177 +310,177 @@
     </style>
 </head>
 <body>
-    <!-- ¶¥²¿µ¼º½À¸ -->
+    <!-- é¡¶éƒ¨å¯¼èˆªæ  -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <img src="assets/logo.jpg?v=2" alt="³Éµç¿ª·ÅÔ­×Ó¿ªÔ´ÉçÍÅ" class="nav-logo-img">
-                <span class="logo-text">³Éµç¿ª·ÅÔ­×Ó¿ªÔ´ÉçÍÅ</span>
+                <img src="assets/logo.jpg?v=2" alt="æˆç”µå¼€æ”¾åŸå­å¼€æºç¤¾å›¢" class="nav-logo-img">
+                <span class="logo-text">æˆç”µå¼€æ”¾åŸå­å¼€æºç¤¾å›¢</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Ê×Ò³</a></li>
-                <li><a href="members.html" class="nav-link">³ÉÔ±</a></li>
-                <li><a href="projects.html" class="nav-link">ÏîÄ¿</a></li>
-                <li><a href="docs/index.html" class="nav-link">ÎÄµµ</a></li>
-                <li><a href="events.html" class="nav-link">»î¶¯</a></li>
-                <li><a href="blog.html" class="nav-link">²©¿Í</a></li>
-                <li><a href="resources.html" class="nav-link">×ÊÔ´</a></li>
-                <li><a href="architecture.html" class="nav-link active">¼Ü¹¹</a></li>
-                <li><button class="theme-toggle" onclick="toggleTheme()" title="ÇĞ»»Ö÷Ìâ">??</button></li>
-                <li><button class="login-trigger-btn" onclick="openLoginModal()" title="µÇÂ¼/×¢²á">?? µÇÂ¼</button></li>
-                <li><a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">? Star</a></li>
+                <li><a href="index.html" class="nav-link">é¦–é¡µ</a></li>
+                <li><a href="members.html" class="nav-link">æˆå‘˜</a></li>
+                <li><a href="projects.html" class="nav-link">é¡¹ç›®</a></li>
+                <li><a href="docs/index.html" class="nav-link">æ–‡æ¡£</a></li>
+                <li><a href="events.html" class="nav-link">æ´»åŠ¨</a></li>
+                <li><a href="blog.html" class="nav-link">åšå®¢</a></li>
+                <li><a href="resources.html" class="nav-link">èµ„æº</a></li>
+                <li><a href="architecture.html" class="nav-link active">æ¶æ„</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" title="åˆ‡æ¢ä¸»é¢˜">ğŸŒ™</button></li>
+                <li><button class="login-trigger-btn" onclick="openLoginModal()" title="ç™»å½•/æ³¨å†Œ">ğŸ” ç™»å½•</button></li>
+                <li><a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">â­ Star</a></li>
                         </ul>
 
         </div>
     </nav>
 
     <div class="main-layout">
-        <!-- ×ó²à±ßÀ¸ -->
+        <!-- å·¦ä¾§è¾¹æ  -->
         <aside class="sidebar">
             <div class="sidebar-card">
-                <h3>?? ¿ìËÙµ¼º½</h3>
+                <h3>ğŸ“Œ å¿«é€Ÿå¯¼èˆª</h3>
                 <ul class="quick-links">
-                    <li><a href="#dept">?? ²¿ÃÅ½á¹¹</a></li>
-                    <li><a href="#groups">?? Ğ¡×é½á¹¹</a></li>
-                    <li><a href="#join">?? ¼ÓÈëÎÒÃÇ</a></li>
+                    <li><a href="#dept">ğŸ¢ éƒ¨é—¨ç»“æ„</a></li>
+                    <li><a href="#groups">ğŸ‘¥ å°ç»„ç»“æ„</a></li>
+                    <li><a href="#join">ğŸ¤ åŠ å…¥æˆ‘ä»¬</a></li>
                 </ul>
             </div>
             <div class="sidebar-card">
-                <h3>?? ÉçÍÅÊı¾İ</h3>
+                <h3>ğŸ“Š ç¤¾å›¢æ•°æ®</h3>
                 <div style="display: flex; flex-direction: column; gap: 8px;">
                     <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-muted); font-size: 0.85rem;">²¿ÃÅ</span>
-                        <span style="font-weight: 600; font-size: 0.85rem;">4 ¸ö</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">éƒ¨é—¨</span>
+                        <span style="font-weight: 600; font-size: 0.85rem;">4 ä¸ª</span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-muted); font-size: 0.85rem;">Ğ¡×é</span>
-                        <span style="font-weight: 600; font-size: 0.85rem;">4 ¸ö</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">å°ç»„</span>
+                        <span style="font-weight: 600; font-size: 0.85rem;">4 ä¸ª</span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-muted); font-size: 0.85rem;">×ÜÈËÊı</span>
-                        <span style="font-weight: 600; font-size: 0.85rem;">28 ÈË</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">æ€»äººæ•°</span>
+                        <span style="font-weight: 600; font-size: 0.85rem;">28 äºº</span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-muted); font-size: 0.85rem;">»îÔ¾ÏîÄ¿</span>
-                        <span style="font-weight: 600; font-size: 0.85rem;">4 ¸ö</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">æ´»è·ƒé¡¹ç›®</span>
+                        <span style="font-weight: 600; font-size: 0.85rem;">4 ä¸ª</span>
                     </div>
                 </div>
             </div>
             <div class="sidebar-card">
-                <h3>?? ¼ÓÈëÉçÍÅ</h3>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">¶Ô¼¼Êõ¸ĞĞËÈ¤£¿Ïë²ÎÓë¿ªÔ´ÏîÄ¿£¿»¶Ó­¼ÓÈëÎÒÃÇ£¡</p>
-                <a href="mailto:openatom@example.com" class="btn btn-primary" style="display: block; text-align: center; text-decoration: none; font-size: 0.8rem;">?? ÁªÏµÎÒÃÇ</a>
+                <h3>ğŸ¤ åŠ å…¥ç¤¾å›¢</h3>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">å¯¹æŠ€æœ¯æ„Ÿå…´è¶£ï¼Ÿæƒ³å‚ä¸å¼€æºé¡¹ç›®ï¼Ÿæ¬¢è¿åŠ å…¥æˆ‘ä»¬ï¼</p>
+                <a href="mailto:openatom@example.com" class="btn btn-primary" style="display: block; text-align: center; text-decoration: none; font-size: 0.8rem;">ğŸ“§ è”ç³»æˆ‘ä»¬</a>
             </div>
         </aside>
 
-        <!-- ÓÒ²àÖ÷ÄÚÈİ -->
+        <!-- å³ä¾§ä¸»å†…å®¹ -->
         <main class="content">
             <!-- Hero -->
             <div style="padding: 32px; background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%); border: 1px solid var(--border-primary); border-radius: 16px; margin-bottom: 32px; text-align: center;">
                 <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 12px;">
-                    <span style="font-size: 2.5rem;">??</span> ×éÖ¯¼Ü¹¹
+                    <span style="font-size: 2.5rem;">ğŸ¢</span> ç»„ç»‡æ¶æ„
                 </h1>
-                <p style="color: var(--text-secondary); font-size: 1rem;">³Éµç¿ª·ÅÔ­×Ó¿ªÔ´ÉçÍÅ ²ÉÓÃ±âÆ½»¯ + Ö°ÄÜ·Ö×é½á¹¹£¬¼¼ÊõÇı¶¯¡¢¿ª·ÅĞ­×÷</p>
+                <p style="color: var(--text-secondary); font-size: 1rem;">æˆç”µå¼€æ”¾åŸå­å¼€æºç¤¾å›¢ é‡‡ç”¨æ‰å¹³åŒ– + èŒèƒ½åˆ†ç»„ç»“æ„ï¼ŒæŠ€æœ¯é©±åŠ¨ã€å¼€æ”¾åä½œ</p>
             </div>
 
-            <!-- ×éÖ¯¼Ü¹¹Í¼ -->
+            <!-- ç»„ç»‡æ¶æ„å›¾ -->
             <div class="org-chart" id="dept">
-                <!-- Ö÷Ï¯ -->
+                <!-- ä¸»å¸­ -->
                 <div class="org-president">
                     <div class="president-card">
-                        <div class="president-avatar">??</div>
-                        <span class="president-name">ÕÅÈğ</span>
-                        <span class="president-role">ÉçÍÅ´´Ê¼ÈË</span>
+                        <div class="president-avatar">ğŸ‘”</div>
+                        <span class="president-name">å¼ ç‘</span>
+                        <span class="president-role">ç¤¾å›¢åˆ›å§‹äºº</span>
                     </div>
                 </div>
 
-                <!-- Á¬½ÓÏß -->
+                <!-- è¿æ¥çº¿ -->
                 <div class="org-line-v"></div>
                 <div class="org-line-h"></div>
                 <div class="org-line-v"></div>
 
-                <!-- ²¿ÃÅÍø¸ñ -->
+                <!-- éƒ¨é—¨ç½‘æ ¼ -->
                 <div class="dept-grid" id="deptGrid">
-                    <!-- ÓÉ JS ¶¯Ì¬äÖÈ¾ -->
-                    <div style="text-align: center; color: var(--text-muted); grid-column: 1/-1; padding: 40px;">¼ÓÔØÖĞ...</div>
+                    <!-- ç”± JS åŠ¨æ€æ¸²æŸ“ -->
+                    <div style="text-align: center; color: var(--text-muted); grid-column: 1/-1; padding: 40px;">åŠ è½½ä¸­...</div>
                 </div>
             </div>
 
-            <!-- Ğ¡×é½á¹¹ -->
+            <!-- å°ç»„ç»“æ„ -->
             <div style="margin-top: 32px;" id="groups">
                 <div class="group-section-title">
-                    <span style="font-size: 1.5rem;">??</span>
-                    ¼¼ÊõĞ¡×é
-                    <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-muted); margin-left: auto;">¹éÊô¸÷²¿ÃÅµÄ×¨ÏîĞ¡×é</span>
+                    <span style="font-size: 1.5rem;">ğŸ‘¥</span>
+                    æŠ€æœ¯å°ç»„
+                    <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-muted); margin-left: auto;">å½’å±å„éƒ¨é—¨çš„ä¸“é¡¹å°ç»„</span>
                 </div>
 
                 <div class="group-grid" id="groupGrid">
-                    <!-- ÓÉ JS ¶¯Ì¬äÖÈ¾ -->
-                    <div style="text-align: center; color: var(--text-muted); grid-column: 1/-1; padding: 40px;">¼ÓÔØÖĞ...</div>
+                    <!-- ç”± JS åŠ¨æ€æ¸²æŸ“ -->
+                    <div style="text-align: center; color: var(--text-muted); grid-column: 1/-1; padding: 40px;">åŠ è½½ä¸­...</div>
                 </div>
             </div>
 
-            <!-- Í³¼Æ -->
+            <!-- ç»Ÿè®¡ -->
             <div class="stats-bar">
                 <div class="stat-item">
                     <div class="stat-num" style="color: var(--accent-green);">5</div>
-                    <div class="stat-label">ºËĞÄ²¿ÃÅ</div>
+                    <div class="stat-label">æ ¸å¿ƒéƒ¨é—¨</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num" style="color: var(--accent-blue);">4</div>
-                    <div class="stat-label">¼¼ÊõĞ¡×é</div>
+                    <div class="stat-label">æŠ€æœ¯å°ç»„</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-num" style="color: var(--accent-purple);">28</div>
-                    <div class="stat-label">ÉçÍÅ³ÉÔ±</div>
+                    <div class="stat-num" style="color: var(--accent-purple);">189</div>
+                    <div class="stat-label">ç¤¾å›¢æˆå‘˜</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num" style="color: var(--accent-orange);">4</div>
-                    <div class="stat-label">¿ªÔ´ÏîÄ¿</div>
+                    <div class="stat-label">å¼€æºé¡¹ç›®</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num" style="color: #f0f6fc;">12</div>
-                    <div class="stat-label">ÀÛ¼ÆÎÄÕÂ</div>
+                    <div class="stat-label">ç´¯è®¡æ–‡ç« </div>
                 </div>
             </div>
 
-            <!-- ¼ÓÈëÎÒÃÇ -->
+            <!-- åŠ å…¥æˆ‘ä»¬ -->
             <div style="margin-top: 48px; padding: 32px; background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 16px;" id="join">
                 <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-                    ?? ¼ÓÈëÎÒÃÇ
+                    ğŸ¤ åŠ å…¥æˆ‘ä»¬
                 </h2>
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
                     <div class="feature-card" style="text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 8px;">??</div>
-                        <h4 style="font-size: 0.95rem; margin-bottom: 6px;">·¢ËÍÉêÇë</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">·¢ËÍÓÊ¼şµ½ openatom@example.com£¬ËµÃ÷ÄãµÄĞËÈ¤·½Ïò</p>
+                        <div style="font-size: 2rem; margin-bottom: 8px;">ğŸ“©</div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 6px;">å‘é€ç”³è¯·</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">å‘é€é‚®ä»¶åˆ° openatom@example.comï¼Œè¯´æ˜ä½ çš„å…´è¶£æ–¹å‘</p>
                     </div>
                     <div class="feature-card" style="text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 8px;">??</div>
-                        <h4 style="font-size: 0.95rem; margin-bottom: 6px;">ÃæÊÔ½»Á÷</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">¼¼Êõ¸ºÔğÈË»áÓëÄã½øĞĞÒ»´Î¼ò¶ÌµÄÏßÉÏ½»Á÷</p>
+                        <div style="font-size: 2rem; margin-bottom: 8px;">ğŸ¤</div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 6px;">é¢è¯•äº¤æµ</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">æŠ€æœ¯è´Ÿè´£äººä¼šä¸ä½ è¿›è¡Œä¸€æ¬¡ç®€çŸ­çš„çº¿ä¸Šäº¤æµ</p>
                     </div>
                     <div class="feature-card" style="text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 8px;">??</div>
-                        <h4 style="font-size: 0.95rem; margin-bottom: 6px;">¿ªÊ¼¹±Ï×</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">·ÖÅäĞ¡×é + mentor£¬ÁìÈ¡µÚÒ»¸öÈÎÎñ£¬¿ªÊ¼¿ªÔ´Ö®ÂÃ</p>
+                        <div style="font-size: 2rem; margin-bottom: 8px;">ğŸš€</div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 6px;">å¼€å§‹è´¡çŒ®</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">åˆ†é…å°ç»„ + mentorï¼Œé¢†å–ç¬¬ä¸€ä¸ªä»»åŠ¡ï¼Œå¼€å§‹å¼€æºä¹‹æ—…</p>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- ¹²Ïí½Å±¾ -->
+    <!-- å…±äº«è„šæœ¬ -->
     <script src="shared.js"></script>
 
-    <!-- ¼Ü¹¹Ò³Êı¾İäÖÈ¾ -->
+    <!-- æ¶æ„é¡µæ•°æ®æ¸²æŸ“ -->
     <script>
     (function() {
-        // äÖÈ¾²¿ÃÅ
+        // æ¸²æŸ“éƒ¨é—¨
         function renderDepts(data) {
             var grid = document.getElementById('deptGrid');
             grid.innerHTML = data.committees.map(function(dept) {
-                // Áìµ¼·ÅÇ°Ãæ£¬¼ÓÌØÊâ±ê¼Ç
+                // é¢†å¯¼æ”¾å‰é¢ï¼ŒåŠ ç‰¹æ®Šæ ‡è®°
                 var allMembers = dept.leaders.map(function(n) {
                     return '<span class="member-chip leader">' + n + '</span>';
                 }).join('') + dept.members.map(function(n) {
@@ -492,7 +492,7 @@
                     '<div class="dept-icon" style="background: ' + hexToRgba(dept.color, 0.15) + ';">' + dept.icon + '</div>' +
                     '<div class="dept-info">' +
                     '<h3>' + dept.name + '</h3>' +
-                    '<div class="dept-leader">¸ºÔğÈË£º' + dept.leaders.join(' / ') + '</div>' +
+                    '<div class="dept-leader">è´Ÿè´£äººï¼š' + dept.leaders.join(' / ') + '</div>' +
                     '</div></div>' +
                     '<div class="dept-desc">' + dept.desc + '</div>' +
                     '<div class="dept-members">' + allMembers + '</div>' +
@@ -500,7 +500,7 @@
             }).join('');
         }
 
-        // äÖÈ¾Ğ¡×é
+        // æ¸²æŸ“å°ç»„
         function renderGroups(data) {
             var grid = document.getElementById('groupGrid');
             grid.innerHTML = data.groups.map(function(g) {
@@ -510,23 +510,23 @@
                 var membersHtml = g.members.map(function(n) {
                     return '<span class="member-chip">' + n + '</span>';
                 }).join('');
-                var projectLink = g.project ? '<a href="project.html?id=' + g.project + '" class="group-project">?? ' + g.project + '</a>' : '';
+                var projectLink = g.project ? '<a href="project.html?id=' + g.project + '" class="group-project">ğŸš€ ' + g.project + '</a>' : '';
 
                 return '<div class="group-card">' +
                     '<div class="group-header">' +
                     '<div class="group-icon">' + g.icon + '</div>' +
                     '<div class="group-info">' +
                     '<h4>' + g.name + '</h4>' +
-                    '<div class="group-parent">¹éÊô£º' + (data.committees.find(function(c){return c.id===g.parent;})||{}).name + '</div>' +
+                    '<div class="group-parent">å½’å±ï¼š' + (data.committees.find(function(c){return c.id===g.parent;})||{}).name + '</div>' +
                     '</div></div>' +
                     '<div class="group-tags">' + tagsHtml + '</div>' +
                     projectLink +
-                    '<div class="group-members">³ÉÔ±£º' + membersHtml + '</div>' +
+                    '<div class="group-members">æˆå‘˜ï¼š' + membersHtml + '</div>' +
                     '</div>';
             }).join('');
         }
 
-        // 16½øÖÆÑÕÉ«×ª rgba
+        // 16è¿›åˆ¶é¢œè‰²è½¬ rgba
         function hexToRgba(hex, alpha) {
             var r = parseInt(hex.slice(1,3), 16);
             var g = parseInt(hex.slice(3,5), 16);
@@ -534,43 +534,43 @@
             return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
         }
 
-        // ¼ÓÔØÊı¾İ
+        // åŠ è½½æ•°æ®
         fetch('data/members.json').then(function(r){ return r.json(); }).then(function(data) {
             renderDepts(data);
             renderGroups(data);
         }).catch(function() {
-            document.getElementById('deptGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--accent-orange);padding:40px;">?? Êı¾İ¼ÓÔØÊ§°Ü£¬Çë¼ì²é data/members.json ÊÇ·ñ´æÔÚ</div>';
+            document.getElementById('deptGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--accent-orange);padding:40px;">âš ï¸ æ•°æ®åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ data/members.json æ˜¯å¦å­˜åœ¨</div>';
             document.getElementById('groupGrid').innerHTML = '';
         });
     })();
     </script>
 
-    <!-- ËÑË÷µ¯´° + »Øµ½¶¥²¿ -->
+    <!-- æœç´¢å¼¹çª— + å›åˆ°é¡¶éƒ¨ -->
     <div class="search-overlay" id="searchOverlay" onclick="if(event.target.id==='searchOverlay'){closeSearch()}">
         <div class="search-modal" onclick="event.stopPropagation()">
-            <input class="search-modal-input" type="text" placeholder="ËÑË÷Ò³Ãæ..." id="searchInput" autocomplete="off">
+            <input class="search-modal-input" type="text" placeholder="æœç´¢é¡µé¢..." id="searchInput" autocomplete="off">
             <div class="search-results" id="searchResults">
-                <div class="search-empty">ÊäÈë¹Ø¼ü´Ê¿ªÊ¼ËÑË÷...</div>
+                <div class="search-empty">è¾“å…¥å…³é”®è¯å¼€å§‹æœç´¢...</div>
             </div>
             <div class="search-modal-footer">
-                <span><kbd>¡ü</kbd><kbd>¡ı</kbd> µ¼º½</span>
-                <span><kbd>Enter</kbd> Ìø×ª</span>
-                <span><kbd>Esc</kbd> ¹Ø±Õ</span>
+                <span><kbd>â†‘</kbd><kbd>â†“</kbd> å¯¼èˆª</span>
+                <span><kbd>Enter</kbd> è·³è½¬</span>
+                <span><kbd>Esc</kbd> å…³é—­</span>
             </div>
         </div>
     </div>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">?</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">â¬†</button>
     <script>
     (function(){
         var searchData=[
-            {title:"Ê×Ò³",desc:"³Éµç¿ª·ÅÔ­×Ó¿ªÔ´ÉçÍÅ ¹Ù·½ÍøÕ¾Ê×Ò³",icon:"??",url:"index.html"},
-            {title:"³ÉÔ±",desc:"ÉçÍÅºËĞÄ³ÉÔ±Óë»îÔ¾³ÉÔ±ÁĞ±í",icon:"??",url:"members.html"},
-            {title:"ÏîÄ¿",desc:"ÉçÍÅÕıÔÚ¿ª·¢µÄÏîÄ¿Õ¹Ê¾",icon:"??",url:"projects.html"},
-            {title:"ÎÄµµ",desc:"ÉçÍÅ½éÉÜ¡¢Git ½Ì³Ì¡¢³£¼ûÎÊÌâ",icon:"??",url:"docs/index.html"},
-            {title:"»î¶¯",desc:"¼´½«¾Ù°ìµÄ»î¶¯ÓëÍùÆÚ»Ø¹Ë",icon:"??",url:"events.html"},
-            {title:"²©¿Í",desc:"¼¼ÊõÎÄÕÂ¡¢½Ì³ÌÓë¾­Ñé·ÖÏí",icon:"??",url:"blog.html"},
-            {title:"×ÊÔ´ÖĞĞÄ",desc:"¿ª·¢¹¤¾ß¡¢Ñ§Ï°Â·Ïß¡¢Êé¼®ÍÆ¼ö",icon:"??",url:"resources.html"},
-            {title:"×éÖ¯¼Ü¹¹",desc:"ÉçÍÅ²¿ÃÅ½á¹¹Óë³ÉÔ±·Ö²¼",icon:"??",url:"architecture.html"},
+            {title:"é¦–é¡µ",desc:"æˆç”µå¼€æ”¾åŸå­å¼€æºç¤¾å›¢ å®˜æ–¹ç½‘ç«™é¦–é¡µ",icon:"ğŸ ",url:"index.html"},
+            {title:"æˆå‘˜",desc:"ç¤¾å›¢æ ¸å¿ƒæˆå‘˜ä¸æ´»è·ƒæˆå‘˜åˆ—è¡¨",icon:"ğŸ‘¥",url:"members.html"},
+            {title:"é¡¹ç›®",desc:"ç¤¾å›¢æ­£åœ¨å¼€å‘çš„é¡¹ç›®å±•ç¤º",icon:"ğŸš€",url:"projects.html"},
+            {title:"æ–‡æ¡£",desc:"ç¤¾å›¢ä»‹ç»ã€Git æ•™ç¨‹ã€å¸¸è§é—®é¢˜",icon:"ğŸ“„",url:"docs/index.html"},
+            {title:"æ´»åŠ¨",desc:"å³å°†ä¸¾åŠçš„æ´»åŠ¨ä¸å¾€æœŸå›é¡¾",icon:"ğŸ“…",url:"events.html"},
+            {title:"åšå®¢",desc:"æŠ€æœ¯æ–‡ç« ã€æ•™ç¨‹ä¸ç»éªŒåˆ†äº«",icon:"ğŸ“",url:"blog.html"},
+            {title:"èµ„æºä¸­å¿ƒ",desc:"å¼€å‘å·¥å…·ã€å­¦ä¹ è·¯çº¿ã€ä¹¦ç±æ¨è",icon:"ğŸ“",url:"resources.html"},
+            {title:"ç»„ç»‡æ¶æ„",desc:"ç¤¾å›¢éƒ¨é—¨ç»“æ„ä¸æˆå‘˜åˆ†å¸ƒ",icon:"ğŸ¢",url:"architecture.html"},
         ];
         var si=document.getElementById("searchInput");
         var sr=document.getElementById("searchResults");
@@ -579,9 +579,9 @@
             si.addEventListener("input",function(){
                 var kw=this.value.trim().toLowerCase();
                 sel=-1;
-                if(!kw){sr.innerHTML='<div class="search-empty">ÊäÈë¹Ø¼ü´Ê¿ªÊ¼ËÑË÷...</div>';return;}
+                if(!kw){sr.innerHTML='<div class="search-empty">è¾“å…¥å…³é”®è¯å¼€å§‹æœç´¢...</div>';return;}
                 var filt=searchData.filter(function(i){return i.title.toLowerCase().includes(kw)||i.desc.toLowerCase().includes(kw);});
-                if(!filt.length){sr.innerHTML='<div class="search-empty">Ã»ÓĞÕÒµ½Ïà¹Ø½á¹û</div>';return;}
+                if(!filt.length){sr.innerHTML='<div class="search-empty">æ²¡æœ‰æ‰¾åˆ°ç›¸å…³ç»“æœ</div>';return;}
                 sr.innerHTML=filt.map(function(item){
                     return '<div class="search-result-item" onclick="location.href=\''+item.url+'\'">'+
                         '<span class="search-result-icon">'+item.icon+'</span>'+
@@ -607,101 +607,101 @@
             var inp=document.getElementById("searchInput");
             if(inp)inp.value="";
             var res=document.getElementById("searchResults");
-            if(res)res.innerHTML='<div class="search-empty">ÊäÈë¹Ø¼ü´Ê¿ªÊ¼ËÑË÷...</div>';
+            if(res)res.innerHTML='<div class="search-empty">è¾“å…¥å…³é”®è¯å¼€å§‹æœç´¢...</div>';
             sel=-1;
         };
     })();
     </script>
 
-    <!-- Ò³½Å -->
+    <!-- é¡µè„š -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2026 ³Éµç¿ª·ÅÔ­×Ó¿ªÔ´ÉçÍÅ ¡¤ <a href="index.html">Ê×Ò³</a></p>
+            <p>&copy; 2026 æˆç”µå¼€æ”¾åŸå­å¼€æºç¤¾å›¢ Â· <a href="index.html">é¦–é¡µ</a></p>
         </div>
     </footer>
-    <!-- ========== µÇÂ¼µ¯´° ========== -->
+    <!-- ========== ç™»å½•å¼¹çª— ========== -->
     <div class="login-overlay" id="loginOverlay" onclick="closeLoginModal()"></div>
     <div class="login-modal" id="loginModal">
-        <!-- µ¯´°Í·²¿ -->
+        <!-- å¼¹çª—å¤´éƒ¨ -->
         <div class="login-modal-header">
-            <h2 class="login-modal-title">?? <span>µÇÂ¼ÕËºÅ</span></h2>
-            <button class="login-close-btn" onclick="closeLoginModal()" title="¹Ø±Õ">¡Á</button>
+            <h2 class="login-modal-title">ğŸ” <span>ç™»å½•è´¦å·</span></h2>
+            <button class="login-close-btn" onclick="closeLoginModal()" title="å…³é—­">Ã—</button>
         </div>
 
-        <!-- Tab ÇĞ»» -->
+        <!-- Tab åˆ‡æ¢ -->
         <div class="login-tabs">
-            <button class="login-tab active" data-tab="login" onclick="switchLoginTab('login')">µÇÂ¼</button>
-            <button class="login-tab" data-tab="register" onclick="switchLoginTab('register')">×¢²á</button>
+            <button class="login-tab active" data-tab="login" onclick="switchLoginTab('login')">ç™»å½•</button>
+            <button class="login-tab" data-tab="register" onclick="switchLoginTab('register')">æ³¨å†Œ</button>
         </div>
 
-        <!-- ±íµ¥ÈİÆ÷ -->
+        <!-- è¡¨å•å®¹å™¨ -->
         <div class="login-form-container">
-            <!-- µÇÂ¼±íµ¥ -->
+            <!-- ç™»å½•è¡¨å• -->
             <form class="login-form active" id="loginForm" onsubmit="handleLogin(event)">
                 <div class="login-input-group">
-                    <label class="login-label">ÓÃ»§Ãû / ÓÊÏä</label>
-                    <input type="text" class="login-input" placeholder="ÇëÊäÈëÓÃ»§Ãû»òÓÊÏä" required>
+                    <label class="login-label">ç”¨æˆ·å / é‚®ç®±</label>
+                    <input type="text" class="login-input" placeholder="è¯·è¾“å…¥ç”¨æˆ·åæˆ–é‚®ç®±" required>
                 </div>
                 <div class="login-input-group">
-                    <label class="login-label">ÃÜÂë</label>
-                    <input type="password" class="login-input" placeholder="ÇëÊäÈëÃÜÂë" required>
+                    <label class="login-label">å¯†ç </label>
+                    <input type="password" class="login-input" placeholder="è¯·è¾“å…¥å¯†ç " required>
                 </div>
                 <div class="login-options">
                     <label class="login-remember">
-                        <input type="checkbox"> ¼Ç×¡ÎÒ
+                        <input type="checkbox"> è®°ä½æˆ‘
                     </label>
-                    <a href="#" class="login-forgot" onclick="alert('ÕâÊÇÒ»¸öÑİÊ¾Ò³Ãæ£¬Íü¼ÇÃÜÂë¹¦ÄÜÔİÎ´ÊµÏÖ'); return false;">Íü¼ÇÃÜÂë£¿</a>
+                    <a href="#" class="login-forgot" onclick="alert('è¿™æ˜¯ä¸€ä¸ªæ¼”ç¤ºé¡µé¢ï¼Œå¿˜è®°å¯†ç åŠŸèƒ½æš‚æœªå®ç°'); return false;">å¿˜è®°å¯†ç ï¼Ÿ</a>
                 </div>
-                <button type="submit" class="login-submit">µÇÂ¼</button>
+                <button type="submit" class="login-submit">ç™»å½•</button>
 
-                <div class="login-divider">»òÊ¹ÓÃÒÔÏÂ·½Ê½µÇÂ¼</div>
+                <div class="login-divider">æˆ–ä½¿ç”¨ä»¥ä¸‹æ–¹å¼ç™»å½•</div>
 
                 <div class="login-social-btns">
-                    <button type="button" class="login-social-btn" onclick="alert('GitHub µÇÂ¼¹¦ÄÜ¿ª·¢ÖĞ...')">
-                        <span>??</span> GitHub
+                    <button type="button" class="login-social-btn" onclick="alert('GitHub ç™»å½•åŠŸèƒ½å¼€å‘ä¸­...')">
+                        <span>ğŸ™</span> GitHub
                     </button>
-                    <button type="button" class="login-social-btn" onclick="alert('Î¢ĞÅµÇÂ¼¹¦ÄÜ¿ª·¢ÖĞ...')">
-                        <span>??</span> Î¢ĞÅ
+                    <button type="button" class="login-social-btn" onclick="alert('å¾®ä¿¡ç™»å½•åŠŸèƒ½å¼€å‘ä¸­...')">
+                        <span>ğŸ’¬</span> å¾®ä¿¡
                     </button>
                 </div>
             </form>
 
-            <!-- ×¢²á±íµ¥ -->
+            <!-- æ³¨å†Œè¡¨å• -->
             <form class="login-form" id="registerForm" onsubmit="handleRegister(event)">
                 <div class="login-input-group">
-                    <label class="login-label">ÓÃ»§Ãû</label>
-                    <input type="text" class="login-input" placeholder="ÇëÊäÈëÓÃ»§Ãû" required>
+                    <label class="login-label">ç”¨æˆ·å</label>
+                    <input type="text" class="login-input" placeholder="è¯·è¾“å…¥ç”¨æˆ·å" required>
                 </div>
                 <div class="login-input-group">
-                    <label class="login-label">ÓÊÏä</label>
-                    <input type="email" class="login-input" placeholder="ÇëÊäÈëÓÊÏäµØÖ·" required>
+                    <label class="login-label">é‚®ç®±</label>
+                    <input type="email" class="login-input" placeholder="è¯·è¾“å…¥é‚®ç®±åœ°å€" required>
                 </div>
                 <div class="login-input-group">
-                    <label class="login-label">ÃÜÂë</label>
-                    <input type="password" class="login-input" placeholder="ÇëÉèÖÃÃÜÂë£¨ÖÁÉÙ6Î»£©" minlength="6" required>
+                    <label class="login-label">å¯†ç </label>
+                    <input type="password" class="login-input" placeholder="è¯·è®¾ç½®å¯†ç ï¼ˆè‡³å°‘6ä½ï¼‰" minlength="6" required>
                 </div>
                 <div class="login-input-group">
-                    <label class="login-label">È·ÈÏÃÜÂë</label>
-                    <input type="password" class="login-input" placeholder="ÇëÔÙ´ÎÊäÈëÃÜÂë" required>
+                    <label class="login-label">ç¡®è®¤å¯†ç </label>
+                    <input type="password" class="login-input" placeholder="è¯·å†æ¬¡è¾“å…¥å¯†ç " required>
                 </div>
-                <button type="submit" class="login-submit">×¢²á</button>
+                <button type="submit" class="login-submit">æ³¨å†Œ</button>
 
-                <div class="login-divider">»òÊ¹ÓÃÒÔÏÂ·½Ê½×¢²á</div>
+                <div class="login-divider">æˆ–ä½¿ç”¨ä»¥ä¸‹æ–¹å¼æ³¨å†Œ</div>
 
                 <div class="login-social-btns">
-                    <button type="button" class="login-social-btn" onclick="alert('GitHub ×¢²á¹¦ÄÜ¿ª·¢ÖĞ...')">
-                        <span>??</span> GitHub
+                    <button type="button" class="login-social-btn" onclick="alert('GitHub æ³¨å†ŒåŠŸèƒ½å¼€å‘ä¸­...')">
+                        <span>ğŸ™</span> GitHub
                     </button>
-                    <button type="button" class="login-social-btn" onclick="alert('Î¢ĞÅ×¢²á¹¦ÄÜ¿ª·¢ÖĞ...')">
-                        <span>??</span> Î¢ĞÅ
+                    <button type="button" class="login-social-btn" onclick="alert('å¾®ä¿¡æ³¨å†ŒåŠŸèƒ½å¼€å‘ä¸­...')">
+                        <span>ğŸ’¬</span> å¾®ä¿¡
                     </button>
                 </div>
             </form>
         </div>
 
-        <!-- µ¯´°µ×²¿ -->
+        <!-- å¼¹çª—åº•éƒ¨ -->
         <div class="login-footer">
-            µÇÂ¼¼´±íÊ¾Í¬Òâ <a href="#" onclick="alert('·şÎñÌõ¿îÒ³Ãæ¿ª·¢ÖĞ...'); return false;">·şÎñÌõ¿î</a> ºÍ <a href="#" onclick="alert('ÒşË½Õş²ßÒ³Ãæ¿ª·¢ÖĞ...'); return false;">ÒşË½Õş²ß</a>
+            ç™»å½•å³è¡¨ç¤ºåŒæ„ <a href="#" onclick="alert('æœåŠ¡æ¡æ¬¾é¡µé¢å¼€å‘ä¸­...'); return false;">æœåŠ¡æ¡æ¬¾</a> å’Œ <a href="#" onclick="alert('éšç§æ”¿ç­–é¡µé¢å¼€å‘ä¸­...'); return false;">éšç§æ”¿ç­–</a>
         </div>
     </div>
 
