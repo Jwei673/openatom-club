@@ -138,3 +138,126 @@
     animateNumbers();
 
 })();
+
+// ========================================
+// 🔐 登录弹窗功能（假登录，仅 UI）
+// ========================================
+
+(function() {
+    'use strict';
+
+    // ========== 打开登录弹窗 ==========
+    window.openLoginModal = function() {
+        var overlay = document.getElementById('loginOverlay');
+        var modal = document.getElementById('loginModal');
+        if (overlay && modal) {
+            overlay.classList.add('active');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // 禁止背景滚动
+        }
+    };
+
+    // ========== 关闭登录弹窗 ==========
+    window.closeLoginModal = function() {
+        var overlay = document.getElementById('loginOverlay');
+        var modal = document.getElementById('loginModal');
+        if (overlay && modal) {
+            overlay.classList.remove('active');
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // 恢复滚动
+        }
+    };
+
+    // ========== 切换登录/注册 Tab ==========
+    window.switchLoginTab = function(tab) {
+        // 切换 tab 按钮状态
+        var tabs = document.querySelectorAll('.login-tab');
+        tabs.forEach(function(t) {
+            t.classList.remove('active');
+            if (t.getAttribute('data-tab') === tab) {
+                t.classList.add('active');
+            }
+        });
+
+        // 切换表单显示
+        var forms = document.querySelectorAll('.login-form');
+        forms.forEach(function(f) {
+            f.classList.remove('active');
+            if (f.id === tab + 'Form') {
+                f.classList.add('active');
+            }
+        });
+
+        // 更新标题
+        var title = document.querySelector('.login-modal-title');
+        if (title) {
+            var icon = tab === 'login' ? '🔐' : '📝';
+            var text = tab === 'login' ? '登录账号' : '注册账号';
+            title.innerHTML = icon + ' <span>' + text + '</span>';
+        }
+    };
+
+    // ========== 假登录处理 ==========
+    window.handleLogin = function(e) {
+        e.preventDefault();
+        
+        var form = document.getElementById('loginForm');
+        var container = document.querySelector('.login-form-container');
+        
+        // 显示成功提示
+        container.innerHTML = 
+            '<div class="login-success-msg">' +
+                '<div class="icon">🎉</div>' +
+                '<h3>登录成功！</h3>' +
+                '<p>欢迎回来，OpenAtom 成员</p>' +
+            '</div>';
+        
+        // 3秒后自动关闭
+        setTimeout(function() {
+            closeLoginModal();
+            // 恢复表单（下次打开时）
+            setTimeout(function() {
+                location.reload();
+            }, 300);
+        }, 2000);
+    };
+
+    // ========== 假注册处理 ==========
+    window.handleRegister = function(e) {
+        e.preventDefault();
+        
+        var container = document.querySelector('.login-form-container');
+        
+        // 显示成功提示
+        container.innerHTML = 
+            '<div class="login-success-msg">' +
+                '<div class="icon">🎊</div>' +
+                '<h3>注册成功！</h3>' +
+                '<p>欢迎加入 OpenAtom 大家庭</p>' +
+            '</div>';
+        
+        // 3秒后自动关闭
+        setTimeout(function() {
+            closeLoginModal();
+            setTimeout(function() {
+                location.reload();
+            }, 300);
+        }, 2000);
+    };
+
+    // ========== 点击遮罩关闭 ==========
+    document.addEventListener('click', function(e) {
+        if (e.target.id === 'loginOverlay') {
+            closeLoginModal();
+        }
+    });
+
+    // ========== ESC 键关闭 ==========
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLoginModal();
+        }
+    });
+
+})();
+

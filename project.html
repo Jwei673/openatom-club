@@ -396,6 +396,7 @@
                 <li><a href="resources.html" class="nav-link">资源</a></li>
                 <li><a href="architecture.html" class="nav-link">架构</a></li>
                 <li><button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌙</button></li>
+                <li><button class="login-trigger-btn" onclick="openLoginModal()" title="登录/注册">🔐 登录</button></li>
                 <li><a href="https://github.com/Jwei673/openatom-club" target="_blank" class="nav-btn">⭐ Star</a></li>
             </ul>
         </div>
@@ -644,5 +645,91 @@
             <p>&copy; 2026 成电开放原子开源社团 · <a href="index.html">首页</a></p>
         </div>
     </footer>
+    <!-- ========== 登录弹窗 ========== -->
+    <div class="login-overlay" id="loginOverlay" onclick="closeLoginModal()"></div>
+    <div class="login-modal" id="loginModal">
+        <!-- 弹窗头部 -->
+        <div class="login-modal-header">
+            <h2 class="login-modal-title">🔐 <span>登录账号</span></h2>
+            <button class="login-close-btn" onclick="closeLoginModal()" title="关闭">×</button>
+        </div>
+
+        <!-- Tab 切换 -->
+        <div class="login-tabs">
+            <button class="login-tab active" data-tab="login" onclick="switchLoginTab('login')">登录</button>
+            <button class="login-tab" data-tab="register" onclick="switchLoginTab('register')">注册</button>
+        </div>
+
+        <!-- 表单容器 -->
+        <div class="login-form-container">
+            <!-- 登录表单 -->
+            <form class="login-form active" id="loginForm" onsubmit="handleLogin(event)">
+                <div class="login-input-group">
+                    <label class="login-label">用户名 / 邮箱</label>
+                    <input type="text" class="login-input" placeholder="请输入用户名或邮箱" required>
+                </div>
+                <div class="login-input-group">
+                    <label class="login-label">密码</label>
+                    <input type="password" class="login-input" placeholder="请输入密码" required>
+                </div>
+                <div class="login-options">
+                    <label class="login-remember">
+                        <input type="checkbox"> 记住我
+                    </label>
+                    <a href="#" class="login-forgot" onclick="alert('这是一个演示页面，忘记密码功能暂未实现'); return false;">忘记密码？</a>
+                </div>
+                <button type="submit" class="login-submit">登录</button>
+
+                <div class="login-divider">或使用以下方式登录</div>
+
+                <div class="login-social-btns">
+                    <button type="button" class="login-social-btn" onclick="alert('GitHub 登录功能开发中...')">
+                        <span>🐙</span> GitHub
+                    </button>
+                    <button type="button" class="login-social-btn" onclick="alert('微信登录功能开发中...')">
+                        <span>💬</span> 微信
+                    </button>
+                </div>
+            </form>
+
+            <!-- 注册表单 -->
+            <form class="login-form" id="registerForm" onsubmit="handleRegister(event)">
+                <div class="login-input-group">
+                    <label class="login-label">用户名</label>
+                    <input type="text" class="login-input" placeholder="请输入用户名" required>
+                </div>
+                <div class="login-input-group">
+                    <label class="login-label">邮箱</label>
+                    <input type="email" class="login-input" placeholder="请输入邮箱地址" required>
+                </div>
+                <div class="login-input-group">
+                    <label class="login-label">密码</label>
+                    <input type="password" class="login-input" placeholder="请设置密码（至少6位）" minlength="6" required>
+                </div>
+                <div class="login-input-group">
+                    <label class="login-label">确认密码</label>
+                    <input type="password" class="login-input" placeholder="请再次输入密码" required>
+                </div>
+                <button type="submit" class="login-submit">注册</button>
+
+                <div class="login-divider">或使用以下方式注册</div>
+
+                <div class="login-social-btns">
+                    <button type="button" class="login-social-btn" onclick="alert('GitHub 注册功能开发中...')">
+                        <span>🐙</span> GitHub
+                    </button>
+                    <button type="button" class="login-social-btn" onclick="alert('微信注册功能开发中...')">
+                        <span>💬</span> 微信
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 弹窗底部 -->
+        <div class="login-footer">
+            登录即表示同意 <a href="#" onclick="alert('服务条款页面开发中...'); return false;">服务条款</a> 和 <a href="#" onclick="alert('隐私政策页面开发中...'); return false;">隐私政策</a>
+        </div>
+    </div>
+
 </body>
 </html>
